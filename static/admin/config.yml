@@ -52,6 +52,7 @@ collections:
           searchFields: ["title"],
           valueField: "title",
           displayFields: ["title"],
+          multiple: true,
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
