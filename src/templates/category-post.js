@@ -1,4 +1,8 @@
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import React from "react";
+import { HTMLContent } from "../components/Content";
+import Layout from "../components/Layout";
 
 export const CategoryPageTemplate = () => <div>This is categorypage</div>;
 
@@ -23,11 +27,22 @@ CategoryPage.propTypes = {
 export default CategoryPage;
 
 export const categoryPageQuery = graphql`
-  query CategoryPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
+  query CategoryPage {
+    allMarkdownRemark(
+      limit: 1000
+      filter: { frontmatter: { templateKey: { eq: "category-post" } } }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            tags
+            templateKey
+          }
+        }
       }
     }
   }

@@ -69,6 +69,25 @@ exports.createPages = ({ actions, graphql }) => {
         },
       });
     });
+
+    // Create blog-list pages
+
+    const postsPerPage = 3;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+    Array.from({ length: numPages }).forEach((_, i) => {
+      console.log("inside", i);
+
+      createPage({
+        path: i === 0 ? `/blog-post-list` : `/blog-post-list/${i}`,
+        component: path.resolve("./src/templates/blog-list.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      });
+    });
   });
 };
 
