@@ -1,98 +1,136 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
-
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    }
-  }
-
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
-  }
-
-  render() {
-    return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
+import React from "react";
+import { Link } from "gatsby";
+const Navbar = () => {
+  return (
+    <header className="header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-xl-5 col-lg-6 col-md-4 col-2">
+            <div className="clickable-menu clickable-mainmenu-active">
+              <Link to="/">
+                <i className="pe-7s-menu"></i>
+              </Link>
             </div>
           </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
+          <div className="col-xl-2 col-lg-2 col-md-4 col-5">
+            <div className="logo text-center logo-hm5">
+              <Link className="sticky-none" to="/">
+                <img alt="" src="assets/img/logo/logo-2.png" />
               </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
+              <Link className="sticky-block" to="/">
+                <img alt="" src="assets/img/logo/logo.png" />
               </Link>
             </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
+          </div>
+          <div className="col-xl-5 col-lg-4 col-md-4 col-5">
+            <div className="header-right-wrap header-right-wrap-white">
+              <div className="same-style header-search">
+                <Link className="search-active" to="/">
+                  <i className="pe-7s-search"></i>
+                </Link>
+                <div className="search-content">
+                  {/* <form action="#">
+                                <input type="text" placeholder="Search">
+                                <button className="button-search"><i className="pe-7s-search"></i></button>
+                            </form> */}
+                </div>
+              </div>
+              <div className="same-style account-satting">
+                <Link className="account-satting-active" to="/">
+                  <i className="pe-7s-user-female"></i>
+                </Link>
+                <div className="account-dropdown">
+                  <ul>
+                    <li>
+                      <Link to="login-register.html">Login</Link>
+                    </li>
+                    <li>
+                      <Link to="login-register.html">Register</Link>
+                    </li>
+                    <li>
+                      <Link to="wishlist.html">Wishlist </Link>
+                    </li>
+                    <li>
+                      <Link to="my-account.html">my account</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="same-style header-wishlist">
+                <Link to="wishlist.html">
+                  <i className="pe-7s-like"></i>
+                </Link>
+              </div>
+              <div className="same-style cart-wrap">
+                <button className="icon-cart">
+                  <i className="pe-7s-shopbag"></i>
+                  <span className="count-style">02</span>
+                </button>
+                <div className="shopping-cart-content">
+                  <ul>
+                    <li className="single-shopping-cart">
+                      <div className="shopping-cart-img">
+                        <Link to="/">
+                          <img alt="" src="assets/img/cart/cart-1.png" />
+                        </Link>
+                      </div>
+                      <div className="shopping-cart-title">
+                        <h4>
+                          <Link to="/">T- Shart &amp; Jeans </Link>
+                        </h4>
+                        <h6>Qty: 02</h6>
+                        <span>$260.00</span>
+                      </div>
+                      <div className="shopping-cart-delete">
+                        <Link to="/">
+                          <i className="fa fa-times-circle"></i>
+                        </Link>
+                      </div>
+                    </li>
+                    <li className="single-shopping-cart">
+                      <div className="shopping-cart-img">
+                        <Link to="/">
+                          <img alt="" src="assets/img/cart/cart-2.png" />
+                        </Link>
+                      </div>
+                      <div className="shopping-cart-title">
+                        <h4>
+                          <Link to="/">T- Shart &amp; Jeans </Link>
+                        </h4>
+                        <h6>Qty: 02</h6>
+                        <span>$260.00</span>
+                      </div>
+                      <div className="shopping-cart-delete">
+                        <Link to="/">
+                          <i className="fa fa-times-circle"></i>
+                        </Link>
+                      </div>
+                    </li>
+                  </ul>
+                  <div className="shopping-cart-total">
+                    <h4>
+                      Shipping : <span>$20.00</span>
+                    </h4>
+                    <h4>
+                      Total : <span className="shop-total">$260.00</span>
+                    </h4>
+                  </div>
+                  <div className="shopping-cart-btn btn-hover text-center">
+                    <Link className="default-btn" to="cart-page.html">
+                      view cart
+                    </Link>
+                    <Link className="default-btn" to="checkout.html">
+                      checkout
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </nav>
-    )
-  }
-}
+      </div>
+    </header>
+  );
+};
 
-export default Navbar
+export default Navbar;
