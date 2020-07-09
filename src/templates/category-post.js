@@ -7,17 +7,16 @@ import Layout from "../components/Layout";
 export const CategoryPageTemplate = () => <div>This is categorypage</div>;
 
 const CategoryPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+  const { allMarkdownRemark: post } = data;
 
-  return (
-    <Layout>
-      <CategoryPageTemplate
-        contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
-      />
-    </Layout>
-  );
+  return null;
+  // <Layout>
+  //   <CategoryPageTemplate
+  //     contentComponent={HTMLContent}
+  //     title={post.frontmatter.title}
+  //     content={post.html}
+  //   />
+  // </Layout>
 };
 
 CategoryPage.propTypes = {
