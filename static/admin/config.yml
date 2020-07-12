@@ -97,6 +97,51 @@ collections:
           displayFields: ["title"],
         }
 
+  - name: "newArrival"
+    label: "NewArrival"
+    folder: "src/pages/new-arrival"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "book-post",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Book",
+          name: "book",
+          widget: "relation",
+          collection: "book",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+        }
+  - name: "saleItems"
+    label: "SaleItems"
+    folder: "src/pages/sale-items"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "book-post",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Book",
+          name: "book",
+          widget: "relation",
+          collection: "book",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+        }
+
   - name: "category"
     label: "Category"
     folder: "src/pages/category"
