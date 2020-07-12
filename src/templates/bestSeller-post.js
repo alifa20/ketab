@@ -17,7 +17,7 @@ BookPage.propTypes = {
 export default BookPage;
 
 export const BookPageQuery = graphql`
-  query BookPage {
+  query BookSellerPage {
     allMarkdownRemark(
       limit: 1000
       filter: { frontmatter: { templateKey: { eq: "category-post" } } }
