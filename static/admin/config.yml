@@ -74,6 +74,28 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 
+  - name: "bestSeller"
+    label: "BestSeller"
+    folder: "src/pages/best-seller"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "book-post",
+        }
+      - {
+          label: "Book",
+          name: "book",
+          widget: "relation",
+          collection: "book",
+          searchFields: ["title"],
+          valueField: "title",
+          displayFields: ["title"],
+        }
+
   - name: "category"
     label: "Category"
     folder: "src/pages/category"
