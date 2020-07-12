@@ -86,6 +86,7 @@ collections:
           widget: "hidden",
           default: "book-post",
         }
+      - { label: "Title", name: "title", widget: "string" }
       - {
           label: "Book",
           name: "book",
