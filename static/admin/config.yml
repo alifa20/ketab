@@ -84,7 +84,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "book-post",
+          default: "bestSeller-post",
         }
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -107,7 +107,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "book-post",
+          default: "newArrival-post",
         }
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -129,7 +129,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "book-post",
+          default: "saleItems-post",
         }
       - { label: "Title", name: "title", widget: "string" }
       - {
