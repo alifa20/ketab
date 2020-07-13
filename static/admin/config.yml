@@ -93,7 +93,7 @@ collections:
           widget: "relation",
           collection: "book",
           searchFields: ["title"],
-          valueField: "title",
+          valueField: "*",
           displayFields: ["title"],
         }
 
