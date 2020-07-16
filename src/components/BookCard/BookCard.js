@@ -1,22 +1,23 @@
 import React from "react";
 
+//
+
+// const BookCard = ({ book }) => {
 const BookCard = ({ book: { frontmatter: data } }) => {
-  console.log("bookbookbook", data);
+  //   console.log("bookbookbook", book);
+  //   const data = book;
+  //   return null;
+  const image = data.featuredimage?.childImageSharp
+    ? data.featuredimage?.childImageSharp.fluid.src
+    : "https://picsum.photos/id/365/270/345";
+
   return (
     <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6">
       <div className="product-wrap mb-25 scroll-zoom">
         <div className="product-img">
           <a href="product-details.html">
-            <img
-              className="default-img"
-              src="https://picsum.photos/id/365/270/345"
-              alt=""
-            />
-            <img
-              className="hover-img"
-              src="https://picsum.photos/id/365/270/345"
-              alt=""
-            />
+            <img className="default-img" src={image} alt="" />
+            <img className="hover-img" src={image} alt="" />
           </a>
           <span className="pink">-10%</span>
           <div className="product-action">

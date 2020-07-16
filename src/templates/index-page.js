@@ -41,8 +41,8 @@ export const IndexPageTemplate = ({
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-12">
                     <div className="slider-content-6 slider-animated-1 text-center">
-                      <h1 className="animated">Welcome to Flone</h1>
-                      <p className="animated">30% off Summer Vacation</p>
+                      <h1 className="animated">{title}</h1>
+                      <p className="animated">{subheading}</p>
                       <div className="slider-btn-5 btn-hover">
                         <a className="animated" href="shop.html">
                           SHOP NOW
@@ -87,13 +87,8 @@ export const IndexPageTemplate = ({
           <div className="container">
             <div className="welcome-content text-center">
               <h5>Who Are We</h5>
-              <h1>Welcome To Flone</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt labor et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut aliquip ex ea commo consequat irure{" "}
-              </p>
+              <h1>{title}</h1>
+              <p>{description}</p>
             </div>
           </div>
         </div>
@@ -257,7 +252,7 @@ export const pageQuery = graphql`
                 date
                 featuredpost
                 book
-                image {
+                featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 270, quality: 100) {
                       src
