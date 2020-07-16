@@ -91,6 +91,90 @@ exports.createPages = ({ actions, graphql }) => {
   });
 };
 
+exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
+  const { createNodeField } = boundActionCreators;
+
+  const postsOfBooks = {};
+  // iterate thorugh all markdown nodes to link books to book
+  // and build book index
+  const markdownNodes = getNodes()
+    .filter((node) => node.internal.type === "MarkdownRemark")
+    .forEach((node) => {
+      if (node.frontmatter.book) {
+        const bookNode = getNodes().find(
+          (node2) =>
+            node2.internal.type === "MarkdownRemark" &&
+            node2.frontmatter.title === node.frontmatter.book
+        );
+
+        if (bookNode) {
+          createNodeField({
+            node,
+            name: "book",
+            value: bookNode.id,
+          });
+
+          // if it's first time for this book init empty array for his posts
+          if (!(bookNode.id in postsOfBooks)) {
+            postsOfBooks[bookNode.id] = [];
+          }
+          // add book to this book
+          postsOfBooks[bookNode.id].push(node.id);
+        }
+      }
+    });
+
+  Object.entries(postsOfBooks).forEach(([bookNodeId, postIds]) => {
+    createNodeField({
+      node: getNode(bookNodeId),
+      name: "posts",
+      value: postIds,
+    });
+  });
+};
+
+// exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
+//   const { createNodeField } = boundActionCreators;
+
+//   const postsOfAuthors = {};
+//   // iterate thorugh all markdown nodes to link books to bestSeller
+//   // and build bestSeller index
+//   const markdownNodes = getNodes()
+//     .filter((node) => node.internal.type === "MarkdownRemark")
+//     .forEach((node) => {
+//       if (node.frontmatter.bestSeller) {
+//         const bestSellerNode = getNodes().find(
+//           (node2) =>
+//             node2.internal.type === "MarkdownRemark" &&
+//             node2.frontmatter.title === node.frontmatter.bestSeller
+//         );
+
+//         if (bestSellerNode) {
+//           createNodeField({
+//             node,
+//             name: "bestSeller",
+//             value: bestSellerNode.id,
+//           });
+
+//           // if it's first time for this bestSeller init empty array for his posts
+//           if (!(bestSellerNode.id in postsOfAuthors)) {
+//             postsOfAuthors[bestSellerNode.id] = [];
+//           }
+//           // add book to this bestSeller
+//           postsOfAuthors[bestSellerNode.id].push(node.id);
+//         }
+//       }
+//     });
+
+//   Object.entries(postsOfAuthors).forEach(([bestSellerNodeId, postIds]) => {
+//     createNodeField({
+//       node: getNode(bestSellerNodeId),
+//       name: "posts",
+//       value: postIds,
+//     });
+//   });
+// };
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   fmImagesToRelative(node); // convert image paths for gatsby images
