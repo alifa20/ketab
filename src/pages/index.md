@@ -1,8 +1,8 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: شهر کتاب استرالیا
 image: /img/998-1920x1280.jpg
-heading: Great coffee with a conscience
+heading: به شهر کتاب استرالیا خوش آمدید
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
   title: Why Kaldi
