@@ -1,16 +1,16 @@
 import React from "react";
+import Rating from "./Rating";
 
 //
 
 // const BookCard = ({ book }) => {
-const BookCard = ({ book: { frontmatter: data } }) => {
-  //   console.log("bookbookbook", book);
-  //   const data = book;
-  //   return null;
+const BookCard = ({ book }) => {
+  if (!book) return null;
+  const { frontmatter: data } = book;
   const image = data.featuredimage?.childImageSharp
     ? data.featuredimage?.childImageSharp.fluid.src
     : "https://picsum.photos/id/365/270/345";
-
+  const rating = 0;
   return (
     <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6">
       <div className="product-wrap mb-25 scroll-zoom">
@@ -47,13 +47,7 @@ const BookCard = ({ book: { frontmatter: data } }) => {
           <h3>
             <a href="product-details.html">{data.title}</a>
           </h3>
-          <div className="product-rating">
-            <i className="fa fa-star-o yellow"></i>
-            <i className="fa fa-star-o yellow"></i>
-            <i className="fa fa-star-o yellow"></i>
-            <i className="fa fa-star-o"></i>
-            <i className="fa fa-star-o"></i>
-          </div>
+          <Rating rating={rating} />
           <div className="product-price">
             <span>$ 60.00</span>
             <span className="old">$ 60.00</span>

@@ -58,7 +58,6 @@ const BlogList = ({ data }) => {
   const { edges } = data.products;
   const { edges: categories } = data.categories;
 
-  console.log("postpost", categories);
   return (
     <Layout>
       <ul>
