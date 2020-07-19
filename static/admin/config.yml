@@ -28,14 +28,14 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Rating", name: "rating", widget: number, min: 0, max: 5 }
       - {
-          label: "NewPrice",
-          name: "rating",
+          label: "New Price",
+          name: "newPrice",
           widget: number,
           valueType: "float",
         }
       - {
-          label: "OldPrice",
-          name: "rating",
+          label: "Old Price",
+          name: "oldPrice",
           widget: number,
           valueType: "float",
         }
