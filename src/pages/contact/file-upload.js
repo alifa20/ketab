@@ -69,6 +69,7 @@ export default class Contact extends React.Component {
                   </label>
                   <div className="control">
                     <input
+                      label="name"
                       className="input"
                       type={"text"}
                       name={"name"}
@@ -82,6 +83,7 @@ export default class Contact extends React.Component {
                   <div className="file">
                     <label className="file-label">
                       <input
+                        label="file"
                         className="file-input"
                         type="file"
                         name="attachment"

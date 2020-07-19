@@ -26,19 +26,6 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Rating", name: "rating", widget: number, min: 0, max: 5 }
-      - {
-          label: "New Price",
-          name: "newPrice",
-          widget: number,
-          valueType: "float",
-        }
-      - {
-          label: "Old Price",
-          name: "oldPrice",
-          widget: number,
-          valueType: "float",
-        }
       - { label: "Sale", name: "sale", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
@@ -71,6 +58,19 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
+      - { label: "Rating", name: "rating", widget: number, min: 0, max: 5 }
+      - {
+          label: "New Price",
+          name: "newPrice",
+          widget: number,
+          valueType: "float",
+        }
+      - {
+          label: "Old Price",
+          name: "oldPrice",
+          widget: number,
+          valueType: "float",
+        }
       - {
           label: "Featured Post",
           name: "featuredpost",

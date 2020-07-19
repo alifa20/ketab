@@ -2,6 +2,7 @@ import React from "react";
 import { BookCard } from "../BookCard";
 
 const BookCardList = ({ books = [] }) => {
+  const filteredBooks = books.filter((book) => book.node.fields.book);
   return (
     <div className="product-area pb-70">
       <div className="container">
@@ -19,9 +20,9 @@ const BookCardList = ({ books = [] }) => {
         <div className="tab-content jump">
           <div className="tab-pane active" id="product-2">
             <div className="row">
-              {books.map((book) => (
+              {filteredBooks.map((book) => (
                 <BookCard
-                  key={book.node.fields.id}
+                  key={book.node.fields.book.id}
                   book={book.node.fields.book}
                 />
               ))}

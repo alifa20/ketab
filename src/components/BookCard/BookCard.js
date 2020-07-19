@@ -22,19 +22,19 @@ const BookCard = ({ book }) => {
           <span className="pink">-10%</span>
           <div className="product-action">
             <div className="pro-same-action pro-wishlist">
-              <a title="Wishlist" href="#">
+              <a title="Wishlist" href="/book">
                 <i className="pe-7s-like"></i>
               </a>
             </div>
             <div className="pro-same-action pro-cart">
-              <a title="Add To Cart" href="#">
+              <a title="Add To Cart" href="/book">
                 <i className="pe-7s-cart"></i> Add to cart
               </a>
             </div>
             <div className="pro-same-action pro-quickview">
               <a
                 title="Quick View"
-                href="#"
+                href="/book"
                 data-toggle="modal"
                 data-target="#exampleModal"
               >

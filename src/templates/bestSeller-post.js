@@ -4,8 +4,8 @@ import React from "react";
 
 export const BookPageTemplate = () => <div>This is Bookpage</div>;
 
-const BookPage = ({ data }) => {
-  const { allMarkdownRemark: post } = data;
+const BookPage = () => {
+  // const { allMarkdownRemark: post } = data;
 
   return null;
 };

@@ -1,11 +1,8 @@
-import React from "react";
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
-
-import Layout from "../components/Layout";
-import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll";
+import React from "react";
 import { BookCardList } from "../components/BookCardList";
+import Layout from "../components/Layout";
 
 export const IndexPageTemplate = ({
   image,
@@ -113,6 +110,7 @@ export const IndexPageTemplate = ({
                     >
                       <div id="mc_embed_signup_scroll" className="mc-form">
                         <input
+                          label="email"
                           className="email"
                           type="email"
                           required=""
@@ -124,6 +122,7 @@ export const IndexPageTemplate = ({
                         />
                         <div className="mc-news" aria-hidden="true">
                           <input
+                            label="test"
                             type="text"
                             value=""
                             tabIndex="-1"
@@ -133,6 +132,7 @@ export const IndexPageTemplate = ({
                         </div>
                         <div className="clear-3">
                           <input
+                            label="subscribe"
                             id="mc-embedded-subscribe"
                             className="button"
                             type="submit"

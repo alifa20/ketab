@@ -1,13 +1,11 @@
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { HTMLContent } from "../components/Content";
-import Layout from "../components/Layout";
 
 export const CategoryPageTemplate = () => <div>This is categorypage</div>;
 
-const CategoryPage = ({ data }) => {
-  const { allMarkdownRemark: post } = data;
+const CategoryPage = () => {
+  // const { allMarkdownRemark: post } = data;
 
   return null;
   // <Layout>
