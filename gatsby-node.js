@@ -70,7 +70,7 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
 
-    // Create blog-list pages
+    // Create collection pages
 
     const postsPerPage = 3;
     const numPages = Math.ceil(posts.length / postsPerPage);
@@ -78,8 +78,8 @@ exports.createPages = ({ actions, graphql }) => {
       console.log("inside", i);
 
       createPage({
-        path: i === 0 ? `/blog-post-list` : `/blog-post-list/${i}`,
-        component: path.resolve("./src/templates/blog-list.js"),
+        path: i === 0 ? `/collection` : `/collection?page=${i}`,
+        component: path.resolve("./src/templates/collection.js"),
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,

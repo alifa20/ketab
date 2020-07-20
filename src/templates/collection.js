@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
-export const BlogListTemplate = ({
+export const collectionTemplate = ({
   content,
   contentComponent,
   description,
@@ -46,7 +46,7 @@ export const BlogListTemplate = ({
   );
 };
 
-BlogListTemplate.propTypes = {
+collectionTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -54,8 +54,8 @@ BlogListTemplate.propTypes = {
   helmet: PropTypes.object,
 };
 
-const BlogList = ({ data }) => {
-  const { edges } = data.products;
+const collection = ({ data }) => {
+  const { edges } = data.books;
   const { edges: categories } = data.categories;
 
   return (
@@ -66,7 +66,7 @@ const BlogList = ({ data }) => {
         ))}
       </ul>
       {edges.map(({ node: post }) => (
-        <BlogListTemplate
+        <collectionTemplate
           content={post.html}
           contentComponent={HTMLContent}
           description={post.frontmatter.description}
@@ -87,20 +87,21 @@ const BlogList = ({ data }) => {
   );
 };
 
-BlogList.propTypes = {
+collection.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 };
 
-export default BlogList;
+export default collection;
 
 export const pageQuery = graphql`
-  query BlogListQuery($skip: Int!, $limit: Int!) {
-    products: allMarkdownRemark(
+  query CollectionQuery($skip: Int!, $limit: Int!) {
+    books: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
+      filter: { frontmatter: { templateKey: { eq: "book-post" } } }
     ) {
       edges {
         node {
