@@ -1935,6 +1935,7 @@ a.default-btn {
 
 .logo {
   margin-top: 32px;
+  color: white;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .logo {
@@ -2178,7 +2179,7 @@ a.default-btn {
 }
 
 .main-menu.menu-white nav ul {
-  text-align: left;
+  text-align: center;
 }
 .main-menu.menu-white nav ul li {
   padding: 0 30px 0 0;

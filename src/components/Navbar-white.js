@@ -3,8 +3,7 @@ import { Link } from "gatsby";
 
 const Navbar = () => {
   return (
-    // <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
-    <header className="header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7">
+    <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-2 col-lg-2 col-md-6 col-4">
@@ -15,22 +14,23 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-xl-8 col-lg-8 d-none d-lg-block">
-            <div className="main-menu menu-white">
+            <div className="main-menu">
               <nav>
                 <ul>
                   <li>
-                    <Link className="sticky-none" to="/">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="sticky-none" to="/collection">
-                      Collection
-                    </Link>
+                    <a href="index.html">
+                      Home <i className="fa fa-angle-down"></i>
+                    </a>
                   </li>
 
                   <li>
-                    <a href="#">Blog</a>
+                    <a href="shop.html">Collection</a>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      Blog <i className="fa fa-angle-down"></i>
+                    </a>
                   </li>
                   <li>
                     <a href="about.html"> About </a>
@@ -43,7 +43,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-xl-2 col-lg-2 col-md-6 col-8">
-            <div className="header-right-wrap header-right-wrap-white">
+            <div className="header-right-wrap">
               <div className="same-style header-search">
                 <a className="search-active" href="#">
                   <i className="pe-7s-search"></i>
