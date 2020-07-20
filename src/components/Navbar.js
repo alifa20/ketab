@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "gatsby";
 
 const Navbar = () => {
+  console.log("we are here");
   return (
     // <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
-    <header className="header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7">
+    // <header className="header-area header-padding-3 sticky-bar header-res-padding clearfix transparent-bar header-hm-7">
+    <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix transparent-bar">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-2 col-lg-2 col-md-6 col-4">

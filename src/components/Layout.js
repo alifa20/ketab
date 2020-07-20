@@ -12,6 +12,7 @@ import "../assets/css/icons.min.css";
 import "../assets/css/style.css";
 
 const TemplateWrapper = ({ children }) => {
+  console.log("TemplateWrapper");
   const { title, description } = useSiteMetadata();
   return (
     <div>
