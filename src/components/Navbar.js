@@ -1,12 +1,22 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const Navbar = () => {
+const Navbar = ({ isHome = false }) => {
   console.log("we are here");
   return (
-    // <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
     // <header className="header-area header-padding-3 sticky-bar header-res-padding clearfix transparent-bar header-hm-7">
-    <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix transparent-bar">
+    // <header
+    //   className={`header-area header-padding-1 sticky-bar header-res-padding clearfix ${
+    //     isHome && "transparent-bar"
+    //   }`}
+    // >
+    // <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
+    // <header className="header-area header-padding-1 sticky-bar header-res-padding clearfix">
+    <header
+      className={`header-area header-padding-1 sticky-bar header-res-padding clearfix ${
+        isHome && "transparent-bar"
+      }`}
+    >
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-2 col-lg-2 col-md-6 col-4">
@@ -17,7 +27,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-xl-8 col-lg-8 d-none d-lg-block">
-            <div className="main-menu menu-white">
+            <div className={`main-menu ${isHome && "menu-white"}`}>
               <nav>
                 <ul>
                   <li>
@@ -45,7 +55,11 @@ const Navbar = () => {
             </div>
           </div>
           <div className="col-xl-2 col-lg-2 col-md-6 col-8">
-            <div className="header-right-wrap header-right-wrap-white">
+            <div
+              className={`header-right-wrap ${
+                isHome && "header-right-wrap-white"
+              }`}
+            >
               <div className="same-style header-search">
                 <a className="search-active" href="#">
                   <i className="pe-7s-search"></i>

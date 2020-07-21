@@ -2,29 +2,15 @@ import React from "react";
 import { BookCard } from "../BookCard";
 
 const BookCardList = ({ books = [] }) => {
-  const filteredBooks = books.filter((book) => book.node.fields.book);
+  // const filteredBooks = books.filter((book) => book.node.fields.book);
   return (
     <div className="product-area pb-70">
       <div className="container">
-        <div className="product-tab-list nav pb-55 text-center">
-          <a href="#product-1" data-toggle="tab">
-            <h4>New Arrivals </h4>
-          </a>
-          <a className="active" href="#product-2" data-toggle="tab">
-            <h4>Best Sellers </h4>
-          </a>
-          <a href="#product-3" data-toggle="tab">
-            <h4>Sale Items</h4>
-          </a>
-        </div>
         <div className="tab-content jump">
           <div className="tab-pane active" id="product-2">
             <div className="row">
-              {filteredBooks.map((book) => (
-                <BookCard
-                  key={book.node.fields.book.id}
-                  book={book.node.fields.book}
-                />
+              {books.map((book) => (
+                <BookCard key={book.id} book={book} />
               ))}
               {/* <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6">
             <div className="product-wrap mb-25 scroll-zoom">

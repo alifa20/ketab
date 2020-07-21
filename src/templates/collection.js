@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
+import { BookCardList } from "../components/BookCardList";
 
 // export const CollectionTemplate = ({
 //   content,
@@ -53,65 +54,62 @@ import Layout from "../components/Layout";
 //   helmet: PropTypes.object,
 // };
 
-const Collection = () => {
-  // const { edges } = data.books;
-  // const { edges: categories } = data.categories;
+const Collection = ({ data }) => {
+  const { edges } = data.books;
+  const { edges: categories } = data.categories;
+  const books = edges
+    .filter((book) => book.node.frontmatter)
+    .map((book) => book.node);
 
+  console.log("booksbooksbooks", books);
   return (
     <Layout>
-      <div className="slider-area">
-        <div className="slider-active-2 owl-carousel nav-style-3">
-          <div
-            className="slider-height-5 d-flex align-items-center bg-img"
-            style={{
-              backgroundPosition: `top left`,
-              backgroundAttachment: `fixed`,
-            }}
-          >
-            <div className="container">
-              <div className="row">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-12">
-                  <div className="slider-content-6 slider-animated-1 text-center">
-                    <h1 className="animated">title</h1>
-                    <p className="animated">subheading</p>
-                    <div className="slider-btn-5 btn-hover">
-                      <a className="animated" href="shop.html">
-                        SHOP NOW
+      <div className="shop-area pt-95 pb-100 section-padding-1">
+        <div className="container-fluid">
+          <div className="row flex-row-reverse">
+            <div className="col-lg-9">
+              <div className="shop-bottom-area mt-35">
+                <BookCardList books={books} />
+                <div className="pro-pagination-style text-center mt-30">
+                  <ul>
+                    <li>
+                      <a className="prev" href="#">
+                        <i className="fa fa-angle-double-left"></i>
                       </a>
-                    </div>
+                    </li>
+                    <li>
+                      <a className="active" href="#">
+                        1
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">2</a>
+                    </li>
+                    <li>
+                      <a className="next" href="#">
+                        <i className="fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="  sidebar-style mr-30">
+                <div className="sidebar-widget">
+                  <h4 className="pro-sidebar-title">Search </h4>
+                  <div className="pro-sidebar-search mb-50 mt-25">
+                    <form className="pro-sidebar-search-form" action="#">
+                      <input type="text" placeholder="Search here..." />
+                      <button>
+                        <i className="pe-7s-search"></i>
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* <div
-              className="slider-height-5 d-flex align-items-center bg-img"
-              style={{
-                backgroundImage: `url(${
-                  !!image.childImageSharp
-                    ? image.childImageSharp.fluid.src
-                    : image
-                })`,
-                backgroundPosition: `top left`,
-                backgroundAttachment: `fixed`,
-              }}
-            >
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-12 col-lg-12 col-md-12 col-12">
-                    <div className="slider-content-6 slider-animated-1 text-center">
-                      <h1 className="animated">Welcome to Flone</h1>
-                      <p className="animated">30% off Summer Vacation</p>
-                      <div className="slider-btn-5 btn-hover">
-                        <a className="animated" href="shop.html">
-                          SHOP NOW
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
         </div>
       </div>
       {/* <ul>
@@ -162,10 +160,22 @@ export const pageQuery = graphql`
           id
           html
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
+            templateKey
+            path
+            heading
             description
-            tags
+            subheading
+            date
+            featuredpost
+            book
+            featuredimage {
+              childImageSharp {
+                fluid(maxWidth: 270, quality: 100) {
+                  src
+                }
+              }
+            }
           }
         }
       }

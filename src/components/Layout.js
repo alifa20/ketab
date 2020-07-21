@@ -11,7 +11,7 @@ import "../assets/css/icons.min.css";
 // import "../assets/css/plugins.css";
 import "../assets/css/style.css";
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, isHome }) => {
   console.log("TemplateWrapper");
   const { title, description } = useSiteMetadata();
   return (
@@ -54,7 +54,7 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
+      <Navbar isHome={isHome} />
       <div>{children}</div>
       <Footer />
     </div>

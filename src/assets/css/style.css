@@ -2181,26 +2181,34 @@ a.default-btn {
 .main-menu.menu-white nav ul {
   text-align: center;
 }
-.main-menu.menu-white nav ul li {
+.main-menu nav ul li {
+  /* .main-menu.menu-white nav ul li { */
   padding: 0 30px 0 0;
 }
 @media only screen and (min-width: 1366px) and (max-width: 1600px) {
-  .main-menu.menu-white nav ul li {
+  /* .main-menu.menu-white nav ul li { */
+  .main-menu nav ul li {
     padding: 0 22px 0 0;
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
-  .main-menu.menu-white nav ul li {
+  /* .main-menu.menu-white nav ul li { */
+  .main-menu nav ul li {
     padding: 0 14px 0 0;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .main-menu.menu-white nav ul li {
+  /* .main-menu.menu-white nav ul li { */
+  .main-menu nav ul li {
     padding: 0 14px 0 0;
   }
 }
 .main-menu.menu-white nav ul li > a {
   color: #ffffff;
+  /* line-height: 112px; */
+}
+
+.main-menu nav ul li > a {
   line-height: 112px;
 }
 

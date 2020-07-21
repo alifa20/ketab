@@ -18,6 +18,10 @@ export const IndexPageTemplate = ({
   {
     // console.log("propspropspropsprops", props);
     // const { image } = props;
+
+    const filteredBestSellers = bestSellers
+      .filter((book) => book.node.fields.book)
+      .map((book) => book.node.fields.book);
     return (
       <>
         <div className="slider-area">
@@ -89,7 +93,18 @@ export const IndexPageTemplate = ({
             </div>
           </div>
         </div>
-        <BookCardList books={bestSellers} />
+        <div className="product-tab-list nav pb-55 text-center">
+          <a href="#product-1" data-toggle="tab">
+            <h4>New Arrivals </h4>
+          </a>
+          <a className="active" href="#product-2" data-toggle="tab">
+            <h4>Best Sellers </h4>
+          </a>
+          <a href="#product-3" data-toggle="tab">
+            <h4>Sale Items</h4>
+          </a>
+        </div>
+        <BookCardList books={filteredBestSellers} />
         {/* Subscribe section */}
         <div className="subscribe-area-3 pb-100">
           <div className="container">
@@ -205,7 +220,7 @@ const IndexPage = ({ data }) => {
   const { edges: bestSellers } = data.bestSeller;
 
   return (
-    <Layout>
+    <Layout isHome={true}>
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
