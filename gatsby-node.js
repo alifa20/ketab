@@ -78,7 +78,7 @@ exports.createPages = ({ actions, graphql }) => {
       console.log("inside", i);
 
       createPage({
-        path: i === 0 ? `/collection` : `/collection?page=${i}`,
+        path: i === 0 ? `/collection` : `/collection/${i}`,
         component: path.resolve("./src/templates/collection.js"),
         context: {
           limit: postsPerPage,
