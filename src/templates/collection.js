@@ -5,6 +5,7 @@ import React from "react";
 import Content from "../components/Content";
 import Layout from "../components/Layout";
 import { BookCardList } from "../components/BookCardList";
+import CategoriesFilterList from "../components/CategoriesFilterList";
 
 // export const CollectionTemplate = ({
 //   content,
@@ -106,6 +107,12 @@ const Collection = ({ data }) => {
                       </button>
                     </form>
                   </div>
+                </div>
+              </div>
+              <div className="sidebar-widget mt-50">
+                <h4 className="pro-sidebar-title">Categories </h4>
+                <div className="sidebar-widget-list mt-20">
+                  <CategoriesFilterList categories={categories} />
                 </div>
               </div>
             </div>
