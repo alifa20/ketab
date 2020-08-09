@@ -1,7 +1,6 @@
 import React from "react";
 
 const CategoriesFilterList = ({ categories }) => {
-  console.log("heeeee categories", categories);
   return (
     <ul>
       {categories.map((category) => (

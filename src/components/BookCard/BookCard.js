@@ -1,11 +1,30 @@
 import React from "react";
+import { constants, useBasket } from "../../shared";
 import Rating from "./Rating";
 
-//
+const wishListKey = "wishList";
 
-// const BookCard = ({ book }) => {
 const BookCard = ({ book }) => {
+  // const [items, setItems] = useBasket([], constants.BASKET_KEY);
+  // console.log("itemssss", items);
+  const { add } = useBasket(constants.BASKET_KEY, []);
+
+  const onAddClick = (e) => {
+    e.preventDefault();
+    add(book);
+    // setItems([...items, { id: book.id, title: book.title }]);
+    // const currentItemsRaw = window.localStorage.getItem(constants.BASKET_KEY);
+    // const currentItems = currentItemsRaw ? JSON.parse(currentItemsRaw) : [];
+
+    // console.log("book.id", book.id);
+    // window.localStorage.setItem(
+    //   constants.BASKET_KEY,
+    //   JSON.stringify([...currentItems, { id: book.id, title: book.title }])
+    // );
+  };
+
   if (!book) return null;
+
   const { frontmatter: data } = book;
   const image = data.featuredimage?.childImageSharp
     ? data.featuredimage?.childImageSharp.fluid.src
@@ -27,7 +46,7 @@ const BookCard = ({ book }) => {
               </a>
             </div>
             <div className="pro-same-action pro-cart">
-              <a title="Add To Cart" href="/book">
+              <a title="Add To Cart" href="/book-add" onClick={onAddClick}>
                 <i className="pe-7s-cart"></i> Add to cart
               </a>
             </div>

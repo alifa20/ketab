@@ -75,8 +75,6 @@ exports.createPages = ({ actions, graphql }) => {
     const postsPerPage = 3;
     const numPages = Math.ceil(posts.length / postsPerPage);
     Array.from({ length: numPages }).forEach((_, i) => {
-      console.log("inside", i);
-
       createPage({
         path: i === 0 ? `/collection` : `/collection/${i}`,
         component: path.resolve("./src/templates/collection.js"),
