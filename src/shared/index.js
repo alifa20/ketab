@@ -1,13 +1,6 @@
-import * as constants from "./constants";
-import { useBasket, useLocalStorage } from "./useBasket";
-import { RootContext, initialState } from "./RootContext";
 import { basketReducer } from "./basketReducer";
+import * as constants from "./constants";
+import { initialState, RootContext } from "./RootContext";
+import { useBasket } from "./useBasket";
 
-export {
-  constants,
-  useBasket,
-  useLocalStorage,
-  RootContext,
-  basketReducer,
-  initialState,
-};
+export { constants, useBasket, RootContext, basketReducer, initialState };

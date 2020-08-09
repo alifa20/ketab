@@ -62,7 +62,6 @@ const Collection = ({ data }) => {
     .filter((book) => book.node.frontmatter)
     .map((book) => book.node);
 
-  console.log("booksbooksbooks", books);
   return (
     <Layout>
       <div className="shop-area pt-95 pb-100 section-padding-1">

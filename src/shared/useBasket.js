@@ -14,8 +14,6 @@ export function useBasket(key, initialValue = {}) {
 
   useEffect(() => {
     const items = window.localStorage.getItem(key);
-    // setState(items ? JSON.parse(items) : initialValue);
-
     dispatch({
       type: SET_STATE,
       items: items ? JSON.parse(items) : initialValue,

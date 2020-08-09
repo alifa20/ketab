@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import CardWrap from "./CardWrap";
 
 const Navbar = ({ isHome = false }) => {
-  console.log("we are here");
   return (
     // <header className="header-area header-padding-3 sticky-bar header-res-padding clearfix transparent-bar header-hm-7">
     // <header
@@ -43,7 +42,7 @@ const Navbar = ({ isHome = false }) => {
                   </li>
 
                   <li>
-                    <a href="#">Blog</a>
+                    <a href="/">Blog</a>
                   </li>
                   <li>
                     <a href="about.html"> About </a>
@@ -62,7 +61,7 @@ const Navbar = ({ isHome = false }) => {
               }`}
             >
               <div className="same-style header-search">
-                <a className="search-active" href="#">
+                <a className="search-active" href="/">
                   <i className="pe-7s-search"></i>
                 </a>
                 <div className="search-content">
@@ -75,7 +74,7 @@ const Navbar = ({ isHome = false }) => {
                 </div>
               </div>
               <div className="same-style account-satting">
-                <a className="account-satting-active" href="#">
+                <a className="account-satting-active" href="/">
                   <i className="pe-7s-user-female"></i>
                 </a>
                 <div className="account-dropdown">
@@ -147,7 +146,7 @@ const Navbar = ({ isHome = false }) => {
                   <a href="shop.html">Shop</a>
                   <ul>
                     <li>
-                      <a href="#">shop layout</a>
+                      <a href="/">shop layout</a>
                       <ul>
                         <li>
                           <a href="shop.html">standard style</a>
@@ -185,7 +184,7 @@ const Navbar = ({ isHome = false }) => {
                       </ul>
                     </li>
                     <li>
-                      <a href="#">product details</a>
+                      <a href="/">product details</a>
                       <ul>
                         <li>
                           <a href="product-details.html">tab style 1</a>
@@ -225,7 +224,7 @@ const Navbar = ({ isHome = false }) => {
                   <a href="shop.html">Collection</a>
                 </li>
                 <li>
-                  <a href="#">Pages</a>
+                  <a href="/">Pages</a>
                   <ul>
                     <li>
                       <a href="about.html">about us</a>

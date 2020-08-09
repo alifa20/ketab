@@ -86,6 +86,14 @@ exports.createPages = ({ actions, graphql }) => {
         },
       });
     });
+
+    // Cart page
+    createPage({
+      path: "/cart",
+      component: path.resolve("./src/templates/cart-page.js"),
+      context: {},
+    });
+    // Create cart page
   });
 };
 
@@ -130,48 +138,6 @@ exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
     });
   });
 };
-
-// exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
-//   const { createNodeField } = boundActionCreators;
-
-//   const postsOfAuthors = {};
-//   // iterate thorugh all markdown nodes to link books to bestSeller
-//   // and build bestSeller index
-//   const markdownNodes = getNodes()
-//     .filter((node) => node.internal.type === "MarkdownRemark")
-//     .forEach((node) => {
-//       if (node.frontmatter.bestSeller) {
-//         const bestSellerNode = getNodes().find(
-//           (node2) =>
-//             node2.internal.type === "MarkdownRemark" &&
-//             node2.frontmatter.title === node.frontmatter.bestSeller
-//         );
-
-//         if (bestSellerNode) {
-//           createNodeField({
-//             node,
-//             name: "bestSeller",
-//             value: bestSellerNode.id,
-//           });
-
-//           // if it's first time for this bestSeller init empty array for his posts
-//           if (!(bestSellerNode.id in postsOfAuthors)) {
-//             postsOfAuthors[bestSellerNode.id] = [];
-//           }
-//           // add book to this bestSeller
-//           postsOfAuthors[bestSellerNode.id].push(node.id);
-//         }
-//       }
-//     });
-
-//   Object.entries(postsOfAuthors).forEach(([bestSellerNodeId, postIds]) => {
-//     createNodeField({
-//       node: getNode(bestSellerNodeId),
-//       name: "posts",
-//       value: postIds,
-//     });
-//   });
-// };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
