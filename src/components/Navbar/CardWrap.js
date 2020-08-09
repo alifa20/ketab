@@ -3,38 +3,15 @@ import { constants, RootContext, useBasket } from "../../shared";
 // import { useLocalStorage, useBasket } from "../../shared";
 
 const CardWrap = () => {
-  //   const [items, setItems] = useState([]);
-
-  //   const ccc = useContext(RootContext);
-  //   console.log("ccc ccc ccc", ccc);
-
-  //   const [items] = useBasket([], constants.BASKET_KEY);
-  //   console.log("in CardWrap");
-  //   useEffect(() => {
-  //     function checkBasketData() {
-  //       const item = localStorage.getItem(constants.BASKET_KEY);
-  //       const basketList = item && JSON.parse(item);
-  //       if (item) {
-  //         setItems(basketList);
-  //       }
-  //     }
-
-  //     checkBasketData();
-  //     window.addEventListener("storage", checkBasketData);
-
-  //     return () => {
-  //       window.removeEventListener("storage", checkBasketData);
-  //     };
-  //   }, []);
-
-  const { items } = useBasket(constants.BASKET_KEY, []);
+  const { items } = useBasket(constants.BASKET_KEY, {});
+  const userAddedItems = Object.values(items).filter(Boolean);
 
   return (
     <div className="same-style cart-wrap">
       <button className="icon-cart">
         <i className="pe-7s-shopbag"></i>
-        {items && items.length > 0 && (
-          <span className="count-style">{items.length}</span>
+        {userAddedItems && userAddedItems.length > 0 && (
+          <span className="count-style">{userAddedItems.length}</span>
         )}
       </button>
       <div className="shopping-cart-content">

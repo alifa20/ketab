@@ -1,5 +1,5 @@
-import React from "react";
-import { constants, useBasket } from "../../shared";
+import React, { useContext } from "react";
+import { constants, useBasket, RootContext } from "../../shared";
 import Rating from "./Rating";
 
 const wishListKey = "wishList";
@@ -7,7 +7,8 @@ const wishListKey = "wishList";
 const BookCard = ({ book }) => {
   // const [items, setItems] = useBasket([], constants.BASKET_KEY);
   // console.log("itemssss", items);
-  const { add } = useBasket(constants.BASKET_KEY, []);
+  const { state } = useContext(RootContext);
+  const { add, remove } = useBasket(constants.BASKET_KEY, {});
 
   const onAddClick = (e) => {
     e.preventDefault();
@@ -23,8 +24,25 @@ const BookCard = ({ book }) => {
     // );
   };
 
-  if (!book) return null;
+  const onRemoveClick = (e) => {
+    e.preventDefault();
+    remove(book);
+    // setItems([...items, { id: book.id, title: book.title }]);
+    // const currentItemsRaw = window.localStorage.getItem(constants.BASKET_KEY);
+    // const currentItems = currentItemsRaw ? JSON.parse(currentItemsRaw) : [];
 
+    // console.log("book.id", book.id);
+    // window.localStorage.setItem(
+    //   constants.BASKET_KEY,
+    //   JSON.stringify([...currentItems, { id: book.id, title: book.title }])
+    // );
+  };
+
+  if (!book) return null;
+  // const canRemove = book.id in state.basket ;
+  const canRemove = state.basket[book.id];
+
+  console.log("state.basket", state.basket, state.basket[book.id]);
   const { frontmatter: data } = book;
   const image = data.featuredimage?.childImageSharp
     ? data.featuredimage?.childImageSharp.fluid.src
@@ -46,9 +64,16 @@ const BookCard = ({ book }) => {
               </a>
             </div>
             <div className="pro-same-action pro-cart">
-              <a title="Add To Cart" href="/book-add" onClick={onAddClick}>
-                <i className="pe-7s-cart"></i> Add to cart
-              </a>
+              {!canRemove && (
+                <a title="Add To Cart" href="/book-add" onClick={onAddClick}>
+                  <i className="pe-7s-cart"></i> Add to cart
+                </a>
+              )}
+              {canRemove && (
+                <a title="Add To Cart" href="/book-add" onClick={onRemoveClick}>
+                  <i className="pe-7s-cart"></i> Remove
+                </a>
+              )}
             </div>
             <div className="pro-same-action pro-quickview">
               <a
