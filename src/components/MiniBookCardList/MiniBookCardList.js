@@ -1,195 +1,95 @@
-import React, { useContext } from "react";
-import { RootContext } from "../../shared";
+import React from "react";
+import { useBasket, constants } from "../../shared";
 
-const MiniBookCardList = () => {
-  const { state } = useContext(RootContext);
+const ItemList = ({ item }) => {
+  const { remove } = useBasket(constants.BASKET_KEY, {});
+  const { frontmatter: data } = item;
+  const image = data.featuredimage?.childImageSharp
+    ? data.featuredimage?.childImageSharp.fluid.src
+    : "https://picsum.photos/id/365/270/345";
+
+  const onDelete = () => remove(item);
+
   return (
-    // <div className="shopping-cart-content cart-visible">
-    //   <ul>
-    //     {Object.values(state.basket).map((item) => (
-    //       <li className="single-shopping-cart">
-    //         <div className="shopping-cart-img">
-    //           <a href="#">
-    //             <img alt="" src="assets/img/cart/cart-1.png" />
-    //           </a>
-    //         </div>
-    //         <div className="shopping-cart-title">
-    //           <h4>
-    //             <a href="#">T- Shart &amp; Jeans </a>
-    //           </h4>
-    //           <h6>Qty: 02</h6>
-    //           <span>$260.00</span>
-    //         </div>
-    //         <div className="shopping-cart-delete">
-    //           <a href="#">
-    //             <i className="fa fa-times-circle"></i>
-    //           </a>
-    //         </div>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
+    <tr>
+      <td className="product-thumbnail">
+        <a href="#">
+          <img src={image} alt={data.title} width={82} height={67} />
+        </a>
+      </td>
+      <td className="product-name">
+        <a href="#">{data.title}</a>
+      </td>
+      <td className="product-price-cart">
+        <span className="amount">$260.00</span>
+      </td>
+      <td className="product-quantity">
+        <div className="cart-plus-minus">
+          <div className="dec qtybutton">-</div>
+          <input
+            className="cart-plus-minus-box"
+            type="text"
+            name="qtybutton"
+            value="2"
+          />
+          <div className="inc qtybutton">+</div>
+        </div>
+      </td>
+      <td className="product-subtotal">$110.00</td>
+      <td className="product-remove">
+        <a href="#">
+          <i className="fa fa-pencil"></i>
+        </a>
+        <a href="#" onClick={onDelete}>
+          <i className="fa fa-times"></i>
+        </a>
+      </td>
+    </tr>
+  );
+};
+const MiniBookCardList = () => {
+  const { items } = useBasket(constants.BASKET_KEY, {});
+  const userAddedItems = Object.values(items).filter(Boolean);
 
-    <div className="cart-main-area pt-90 pb-100">
-      <div className="container">
-        <h3 className="cart-page-title">Your cart items</h3>
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-            <div className="discount-code-wrapper">
-              <div className="title-wrap">
-                <h4 className="cart-bottom-title section-bg-gray">
-                  Use Coupon Code
-                </h4>
-              </div>
-              <div className="discount-code">
-                <p>Enter your coupon code if you have one.</p>
-                <form>
-                  <input type="text" required="" name="name" />
-                  <button className="cart-btn-2" type="submit">
-                    Apply Coupon
-                  </button>
-                </form>
+  return (
+    <div className="row">
+      <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+        <form action="#">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="cart-shiping-update-wrapper">
+                <div className="cart-shiping-update">
+                  <a href="#">Continue Shopping</a>
+                </div>
+                <div className="cart-clear">
+                  {/* <button>Update Shopping Cart</button> */}
+                  <a href="#">Clear Shopping Cart</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-            <form action="#">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="cart-shiping-update-wrapper">
-                    <div className="cart-shiping-update">
-                      <a href="#">Continue Shopping</a>
-                    </div>
-                    <div className="cart-clear">
-                      {/* <button>Update Shopping Cart</button> */}
-                      <a href="#">Clear Shopping Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="table-content table-responsive cart-table-content">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Product Name</th>
-                      <th>Until Price</th>
-                      <th>Qty</th>
-                      <th>Subtotal</th>
-                      <th>action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="product-thumbnail">
-                        <a href="#">
-                          <img src="assets/img/cart/cart-1.png" alt="" />
-                        </a>
-                      </td>
-                      <td className="product-name">
-                        <a href="#">Product Name</a>
-                      </td>
-                      <td className="product-price-cart">
-                        <span className="amount">$260.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="cart-plus-minus">
-                          <div className="dec qtybutton">-</div>
-                          <input
-                            className="cart-plus-minus-box"
-                            type="text"
-                            name="qtybutton"
-                            value="2"
-                          />
-                          <div className="inc qtybutton">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">$110.00</td>
-                      <td className="product-remove">
-                        <a href="#">
-                          <i className="fa fa-pencil"></i>
-                        </a>
-                        <a href="#">
-                          <i className="fa fa-times"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="product-thumbnail">
-                        <a href="#">
-                          <img src="assets/img/cart/cart-2.png" alt="" />
-                        </a>
-                      </td>
-                      <td className="product-name">
-                        <a href="#">Product Name</a>
-                      </td>
-                      <td className="product-price-cart">
-                        <span className="amount">$150.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="cart-plus-minus">
-                          <div className="dec qtybutton">-</div>
-                          <input
-                            className="cart-plus-minus-box"
-                            type="text"
-                            name="qtybutton"
-                            value="2"
-                          />
-                          <div className="inc qtybutton">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">$150.00</td>
-                      <td className="product-remove">
-                        <a href="#">
-                          <i className="fa fa-pencil"></i>
-                        </a>
-                        <a href="#">
-                          <i className="fa fa-times"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="product-thumbnail">
-                        <a href="#">
-                          <img src="assets/img/cart/cart-1.png" alt="" />
-                        </a>
-                      </td>
-                      <td className="product-name">
-                        <a href="#">Product Name </a>
-                      </td>
-                      <td className="product-price-cart">
-                        <span className="amount">$170.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="cart-plus-minus">
-                          <div className="dec qtybutton">-</div>
-                          <input
-                            className="cart-plus-minus-box"
-                            type="text"
-                            name="qtybutton"
-                            value="2"
-                          />
-                          <div className="inc qtybutton">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">$170.00</td>
-                      <td className="product-remove">
-                        <a href="#">
-                          <i className="fa fa-pencil"></i>
-                        </a>
-                        <a href="#">
-                          <i className="fa fa-times"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </form>
+          <div className="table-content table-responsive cart-table-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Until Price</th>
+                  <th>Qty</th>
+                  <th>Subtotal</th>
+                  <th>action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userAddedItems.map(({ item }) => (
+                  <ItemList key={item.id} item={item} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </form>
 
-            {/* <div className="row">
+        {/* <div className="row">
               <div className="col-lg-4 col-md-6">
                 <div className="cart-tax">
                   <div className="title-wrap">
@@ -277,8 +177,6 @@ const MiniBookCardList = () => {
                 </div>
               </div>
             </div>*/}
-          </div>
-        </div>
       </div>
     </div>
   );
