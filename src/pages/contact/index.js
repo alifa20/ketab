@@ -18,19 +18,41 @@ export default class Index extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    fetch("/", {
+    // /.netlify/functions/send-contact-email
+    // fetch("/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: encode({
+    //     "form-name": form.getAttribute("name"),
+    //     ...this.state,
+    //   }),
+    // })
+    //   .then(() => navigate(form.getAttribute("action")))
+    //   .catch((error) => alert(error));
+
+    // try {
+    //   await fetch("/.netlify/lambda/send-contact-email", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //     body: encode({
+    //       "form-name": form.getAttribute("name"),
+    //       ...this.state,
+    //     }),
+    //   });
+
+    //   alert("Successful!");
+    // } catch (err) {
+    //   alert(err);
+    // }
+
+    fetch("/.netlify/functions/send-contact-email", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute("action")))
-      .catch((error) => alert(error));
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.state),
+    }).then((text) => console.log(text));
   };
 
   render() {
@@ -64,11 +86,10 @@ export default class Index extends React.Component {
                     <input
                       className="input"
                       type={"text"}
-                      name={"name"}
+                      name={"contactName"}
                       onChange={this.handleChange}
                       id={"name"}
                       required={true}
-                      defaultValue="Ali Fathieh"
                     />
                   </div>
                 </div>
@@ -80,11 +101,10 @@ export default class Index extends React.Component {
                     <input
                       className="input"
                       type={"email"}
-                      name={"email"}
+                      name={"contactEmail"}
                       onChange={this.handleChange}
                       id={"email"}
                       required={true}
-                      defaultValue="ali.fathieh@gmail.com"
                     />
                   </div>
                 </div>
@@ -99,7 +119,6 @@ export default class Index extends React.Component {
                       onChange={this.handleChange}
                       id={"message"}
                       required={true}
-                      defaultValue="This is from Ali."
                     />
                   </div>
                 </div>

@@ -18,7 +18,7 @@ export function useBasket(key, initialValue = {}) {
       type: SET_STATE,
       items: items ? JSON.parse(items) : initialValue,
     });
-  }, [dispatch, initialValue, key]);
+  }, [dispatch, JSON.stringify(initialValue), key]);
 
   const items = state.basket;
   return {
