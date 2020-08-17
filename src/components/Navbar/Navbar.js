@@ -45,10 +45,10 @@ const Navbar = ({ isHome = false }) => {
                     <a href="/">Blog</a>
                   </li>
                   <li>
-                    <a href="about.html"> About </a>
+                    <a href="/about"> About </a>
                   </li>
                   <li>
-                    <a href="contact.html"> Contact</a>
+                    <a href="/contact"> Contact</a>
                   </li>
                 </ul>
               </nav>
@@ -227,7 +227,7 @@ const Navbar = ({ isHome = false }) => {
                   <a href="/">Pages</a>
                   <ul>
                     <li>
-                      <a href="about.html">about us</a>
+                      <a href="/about">about us</a>
                     </li>
                     <li>
                       <a href="cart-page.html">cart page</a>
@@ -245,7 +245,7 @@ const Navbar = ({ isHome = false }) => {
                       <a href="login-register.html">login / register </a>
                     </li>
                     <li>
-                      <a href="contact.html">contact us </a>
+                      <a href="/contact">contact us </a>
                     </li>
                   </ul>
                 </li>
@@ -273,10 +273,10 @@ const Navbar = ({ isHome = false }) => {
                   </ul>
                 </li>
                 <li>
-                  <a href="about.html">About us</a>
+                  <a href="/about">About us</a>
                 </li>
                 <li>
-                  <a href="contact.html">Contact</a>
+                  <a href="/contact">Contact</a>
                 </li>
               </ul>
             </nav>

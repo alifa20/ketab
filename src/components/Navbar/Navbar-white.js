@@ -34,10 +34,10 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="about.html"> About </a>
+                    <a href="/about"> About </a>
                   </li>
                   <li>
-                    <a href="contact.html"> Contact</a>
+                    <a href="/contact"> Contact</a>
                   </li>
                 </ul>
               </nav>
@@ -212,7 +212,7 @@ const Navbar = () => {
                   <a href="#">Pages</a>
                   <ul>
                     <li>
-                      <a href="about.html">about us</a>
+                      <a href="/about">about us</a>
                     </li>
                     <li>
                       <a href="cart-page.html">cart page</a>
@@ -230,7 +230,7 @@ const Navbar = () => {
                       <a href="login-register.html">login / register </a>
                     </li>
                     <li>
-                      <a href="contact.html">contact us </a>
+                      <a href="/contact">contact us </a>
                     </li>
                   </ul>
                 </li>
@@ -258,10 +258,10 @@ const Navbar = () => {
                   </ul>
                 </li>
                 <li>
-                  <a href="about.html">About us</a>
+                  <a href="/about">About us</a>
                 </li>
                 <li>
-                  <a href="contact.html">Contact</a>
+                  <a href="/contact">Contact</a>
                 </li>
               </ul>
             </nav>
