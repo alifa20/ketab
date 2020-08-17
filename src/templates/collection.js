@@ -1,11 +1,9 @@
-import { graphql, Link } from "gatsby";
-import { kebabCase } from "lodash";
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import Content from "../components/Content";
-import Layout from "../components/Layout";
 import { BookCardList } from "../components/BookCardList";
 import CategoriesFilterList from "../components/CategoriesFilterList";
+import Layout from "../components/Layout";
 
 // export const CollectionTemplate = ({
 //   content,

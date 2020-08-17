@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
-import { constants, useBasket, RootContext } from "../../shared";
+import { constants, RootContext, useBasket } from "../../shared";
 import Rating from "./Rating";
-
-const wishListKey = "wishList";
 
 const BookCard = ({ book }) => {
   // const [items, setItems] = useBasket([], constants.BASKET_KEY);
