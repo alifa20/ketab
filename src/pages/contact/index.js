@@ -191,6 +191,7 @@ export default class Index extends React.Component {
                           name={"message"}
                           onChange={this.handleChange}
                           id={"message"}
+                          required={true}
                         />
 
                         <div className="col-lg-12">{this.state.contactRes}</div>
