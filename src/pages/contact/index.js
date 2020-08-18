@@ -21,62 +21,55 @@ export default class Index extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    // /.netlify/functions/send-contact-email
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   body: encode({
-    //     "form-name": form.getAttribute("name"),
-    //     ...this.state,
-    //   }),
-    // })
-    //   .then(() => navigate(form.getAttribute("action")))
-    //   .catch((error) => alert(error));
-
-    // try {
-    //   await fetch("/.netlify/lambda/send-contact-email", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //     body: encode({
-    //       "form-name": form.getAttribute("name"),
-    //       ...this.state,
-    //     }),
-    //   });
-
-    //   alert("Successful!");
-    // } catch (err) {
-    //   alert(err);
-    // }
-
-    fetch("/.netlify/functions/send-contact-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(this.state),
-    }).then((text) => console.log(text));
+    try {
+      const text = await fetch("/.netlify/functions/send-contact-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.state),
+      }).catch((error) => {
+        console.log("This is err", error);
+      });
+      console.log(text);
+      if (text.status === 200) {
+        this.setState({
+          contactRes: "Message successfully sent.",
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          contactRes: "Error happened please try later.",
+        });
+      }
+    } catch (err) {
+      this.setState({
+        ...this.state,
+        contactRes: "Error happened please try later.",
+      });
+    }
   };
 
   render() {
     return (
       <Layout>
-        <div class="contact-area pt-100 pb-100">
-          <div class="container">
-            <div class="custom-row-2">
-              <div class="col-lg-4 col-md-5">
-                <div class="contact-info-wrap">
-                  <div class="single-contact-info">
-                    <div class="contact-icon">
-                      <i class="fa fa-phone"></i>
+        <div className="contact-area pt-100 pb-100">
+          <div className="container">
+            <div className="custom-row-2">
+              <div className="col-lg-4 col-md-5">
+                <div className="contact-info-wrap">
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-phone"></i>
                     </div>
-                    <div class="contact-info-dec">
+                    <div className="contact-info-dec">
                       <p>+012 345 678 102</p>
                       <p>+012 345 678 102</p>
                     </div>
                   </div>
-                  <div class="single-contact-info">
-                    <div class="contact-icon">
-                      <i class="fa fa-globe"></i>
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-globe"></i>
                     </div>
-                    <div class="contact-info-dec">
+                    <div className="contact-info-dec">
                       <p>
                         <a href="#">urname@email.com</a>
                       </p>
@@ -85,52 +78,53 @@ export default class Index extends React.Component {
                       </p>
                     </div>
                   </div>
-                  <div class="single-contact-info">
-                    <div class="contact-icon">
-                      <i class="fa fa-map-marker"></i>
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-map-marker"></i>
                     </div>
-                    <div class="contact-info-dec">
+                    <div className="contact-info-dec">
                       <p>Address goes here, </p>
                       <p>street, Crossroad 123.</p>
                     </div>
                   </div>
-                  <div class="contact-social text-center">
+                  <div className="contact-social text-center">
                     <h3>Follow Us</h3>
                     <ul>
                       <li>
                         <a href="#">
-                          <i class="fa fa-facebook"></i>
+                          <i className="fa fa-facebook"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-pinterest-p"></i>
+                          <i className="fa fa-pinterest-p"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-tumblr"></i>
+                          <i className="fa fa-tumblr"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-vimeo"></i>
+                          <i className="fa fa-vimeo"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-twitter"></i>
+                          <i className="fa fa-twitter"></i>
                         </a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8 col-md-7">
-                <div class="contact-form">
-                  <div class="contact-title mb-30">
+              <div className="col-lg-8 col-md-7">
+                <div className="contact-form">
+                  <div className="contact-title mb-30">
                     <h2>Get In Touch</h2>
                   </div>
+
                   <form
                     className="contact-form-style"
                     id="contact-form"
@@ -149,8 +143,9 @@ export default class Index extends React.Component {
                         <input name="bot-field" onChange={this.handleChange} />
                       </label>
                     </div>
-                    <div class="row">
-                      <div class="col-lg-6">
+
+                    <div className="row">
+                      <div className="col-lg-6">
                         <input
                           placeholder="Name*"
                           className="input"
@@ -161,7 +156,7 @@ export default class Index extends React.Component {
                           required={true}
                         />
                       </div>
-                      <div class="col-lg-6">
+                      <div className="col-lg-6">
                         <input
                           className="input"
                           placeholder="Email*"
@@ -172,12 +167,13 @@ export default class Index extends React.Component {
                           required={true}
                         />
                       </div>
-                      <div class="col-lg-12">
+                      <div className="col-lg-12">
                         {/* <input
                           name="subject"
                           placeholder="Subject*"
                           type="text"
                         /> */}
+
                         <input
                           className="input"
                           placeholder="Subject*"
@@ -188,22 +184,24 @@ export default class Index extends React.Component {
                           required={true}
                         />
                       </div>
-                      <div class="col-lg-12">
+                      <div className="col-lg-12">
                         <textarea
                           placeholder="Your Massege*"
                           className="textarea"
                           name={"message"}
                           onChange={this.handleChange}
                           id={"message"}
-                          required={true}
                         />
-                        <button class="submit" type="submit">
+
+                        <div className="col-lg-12">{this.state.contactRes}</div>
+
+                        <button className="submit" type="submit">
                           SEND
                         </button>
                       </div>
                     </div>
                   </form>
-                  <p class="form-messege"></p>
+                  <p className="form-messege"></p>
                 </div>
               </div>
             </div>
