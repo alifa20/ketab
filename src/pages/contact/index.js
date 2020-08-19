@@ -10,7 +10,7 @@ function encode(data) {
     .join("&");
 }
 
-window.netlifyIdentity = netlifyIdentity;
+// window.netlifyIdentity = netlifyIdentity;
 netlifyIdentity.init({});
 
 export default class Index extends React.Component {
