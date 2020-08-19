@@ -2,7 +2,7 @@ import React from "react";
 import { navigate } from "gatsby-link";
 import Layout from "../../components/Layout";
 
-import netlifyIdentity from "netlify-identity-widget";
+// import netlifyIdentity from "netlify-identity-widget";
 
 function encode(data) {
   return Object.keys(data)
@@ -11,7 +11,7 @@ function encode(data) {
 }
 
 // window.netlifyIdentity = netlifyIdentity;
-netlifyIdentity.init({});
+// netlifyIdentity.init({});
 
 export default class Index extends React.Component {
   constructor(props) {

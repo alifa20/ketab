@@ -1,5 +1,5 @@
 import { withPrefix } from "gatsby";
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/fonts.css";
@@ -11,10 +11,16 @@ import Navbar from "../components/Navbar";
 import { basketReducer, RootContext, initialState } from "../shared";
 // import "./all.sass";
 import useSiteMetadata from "./SiteMetadata";
+import netlifyIdentity from "netlify-identity-widget";
 
 // export const RootContext = React.createContext({ basket: [], wishList: [] });
 
 const TemplateWrapper = ({ children, isHome }) => {
+  useEffect(() => {
+    window.netlifyIdentity = netlifyIdentity;
+    netlifyIdentity.init({});
+  }, []);
+
   const { title, description } = useSiteMetadata();
 
   const [state, dispatch] = useReducer(basketReducer, initialState);
