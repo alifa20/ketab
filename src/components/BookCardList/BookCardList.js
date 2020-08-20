@@ -1,5 +1,6 @@
 import React from "react";
 import { BookCard } from "../BookCard";
+import "../../assets/scss/_product.scss";
 
 const BookCardList = ({ books = [] }) => {
   // const filteredBooks = books.filter((book) => book.node.fields.book);

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import { BookCardList } from "../components/BookCardList";
 import Layout from "../components/Layout";
+import "../assets/scss/_slider.scss";
+import "../assets/scss/_suscribe.scss";
 
 export const IndexPageTemplate = ({
   image,

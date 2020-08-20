@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 import CardWrap from "./CardWrap";
+import "../../assets/scss/_header.scss";
+import "../../assets/scss/_breadcrumb.scss";
 
 const Navbar = ({ isHome = false }) => {
   return (

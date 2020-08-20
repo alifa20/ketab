@@ -4,6 +4,9 @@ import React from "react";
 import { BookCardList } from "../components/BookCardList";
 import CategoriesFilterList from "../components/CategoriesFilterList";
 import Layout from "../components/Layout";
+import "../assets/scss/_sidebar.scss";
+// import "../assets/scss/_blog.scss";
+import "../assets/scss/_shop.scss";
 
 // export const CollectionTemplate = ({
 //   content,

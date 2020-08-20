@@ -9,7 +9,7 @@ const CartPage = () => {
       <div className="shop-area pt-95 pb-100 section-padding-1">
         <div className="container-fluid">
           <div className="row flex-row-reverse">
-            <div className="col-lg-9">
+            <div className="col-lg-12">
               <div className="shop-bottom-area mt-35">
                 <div className="cart-main-area pt-90 pb-100">
                   <div className="container">

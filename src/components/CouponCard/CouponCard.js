@@ -22,11 +22,24 @@ const CouponCard = () => {
         <div className="discount-code-wrapper">
           <div className="title-wrap">
             <h4 className="cart-bottom-title section-bg-gray">
-              Use Coupon Code
+              Submit your book list
             </h4>
           </div>
           <div className="discount-code">
-            <p>Enter your coupon code if you have one.</p>
+            <p>You need to login/signup before submiting your book list.</p>
+
+            <div className="billing-info-wrap">
+              <div className="checkout-account-toggle open-toggle2 mb-30">
+                <button
+                  className="checkout-btn"
+                  type="submit"
+                  disabled
+                  onClick={() => alert()}
+                >
+                  Login / Signup
+                </button>
+              </div>
+            </div>
             <form>
               <input type="text" required="" name="name" />
               <button className="cart-btn-2" type="submit" onClick={onClick}>
