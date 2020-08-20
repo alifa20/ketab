@@ -75,6 +75,9 @@
       text-transform: uppercase;
       border-radius: 50px;
       z-index: 9;
+      &.loggedIn {
+        background: #dddddd;
+      }
       &:hover {
         background-color: #333;
       }

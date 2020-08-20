@@ -3,7 +3,7 @@ import netlifyIdentity from "netlify-identity-widget";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
 
 const CouponCard = () => {
-  const onClick = (e) => {
+  const onLoginForm = (e) => {
     e.preventDefault();
     netlifyIdentity.open();
   };
@@ -31,21 +31,42 @@ const CouponCard = () => {
             <div className="billing-info-wrap">
               <div className="checkout-account-toggle open-toggle2 mb-30">
                 <button
-                  className="checkout-btn"
+                  className={`checkout-btn ${isLoggedIn && "loggedIn"}`}
                   type="submit"
-                  disabled
-                  onClick={() => alert()}
+                  onClick={onLoginForm}
                 >
                   Login / Signup
                 </button>
               </div>
             </div>
-            <form>
-              <input type="text" required="" name="name" />
-              <button className="cart-btn-2" type="submit" onClick={onClick}>
-                {!isLoggedIn ? "Login" : "Apply Coupon"}
-              </button>
-            </form>
+            {/* </div> */}
+            {/* <div className="discount-code"> */}
+            {/* <div className="title-wrap">
+              <h4 className="cart-bottom-title section-bg-gray">
+                Submit your book list
+              </h4>
+            </div> */}
+            {/* <p>Notes</p> */}
+            {isLoggedIn && (
+              <form>
+                {/* <input type="text" required="" name="name" /> */}
+                <textarea
+                  placeholder="Additional Notes"
+                  className="textarea"
+                  name={"message"}
+                  id={"message"}
+                />
+                {/* <input type="text" required="" name="name" /> */}
+                <button
+                  className="cart-btn-2"
+                  type="submit"
+                  onClick={onLoginForm}
+                >
+                  {/* {!isLoggedIn ? "Login" : "Send books request"} */}
+                  Send books request
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
