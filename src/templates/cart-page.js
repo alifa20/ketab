@@ -2,6 +2,9 @@ import React from "react";
 import Layout from "../components/Layout";
 import MiniBookCardList from "../components/MiniBookCardList";
 import CouponCard from "../components/CouponCard/CouponCard";
+// import "../assets/scss/_slider.scss";
+import "../assets/scss/_checkout.scss";
+import "../assets/scss/_cart.scss";
 
 const CartPage = () => {
   return (
