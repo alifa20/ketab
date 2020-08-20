@@ -1,6 +1,7 @@
 import React from "react";
 import { navigate } from "gatsby-link";
 import Layout from "../../components/Layout";
+import "../../assets/scss/_contact.scss";
 
 // import netlifyIdentity from "netlify-identity-widget";
 
