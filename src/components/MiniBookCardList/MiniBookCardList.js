@@ -70,16 +70,18 @@ const MiniBookCardList = () => {
           </div>
           <div className="table-content table-responsive cart-table-content">
             <table>
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Product Name</th>
-                  <th>Until Price</th>
-                  <th>Qty</th>
-                  <th>Subtotal</th>
-                  <th>action</th>
-                </tr>
-              </thead>
+              {userAddedItems.length > 0 && (
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Until Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th>action</th>
+                  </tr>
+                </thead>
+              )}
               <tbody>
                 {userAddedItems.map(({ item }) => (
                   <ItemList key={item.id} item={item} />

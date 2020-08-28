@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import netlifyIdentity from "netlify-identity-widget";
+import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
 
 const CouponCard = () => {
+  const { items } = useBasket(constants.BASKET_KEY, {});
+  const userAddedItems = Object.values(items).filter(Boolean);
+  const hasItems = userAddedItems.length > 0;
+
   const onLoginForm = (e) => {
     e.preventDefault();
     netlifyIdentity.open();
@@ -39,30 +44,22 @@ const CouponCard = () => {
                 </button>
               </div>
             </div>
-            {/* </div> */}
-            {/* <div className="discount-code"> */}
-            {/* <div className="title-wrap">
-              <h4 className="cart-bottom-title section-bg-gray">
-                Submit your book list
-              </h4>
-            </div> */}
-            {/* <p>Notes</p> */}
-            {isLoggedIn && (
+
+            {hasItems && }
+
+            {hasItems && isLoggedIn && (
               <form>
-                {/* <input type="text" required="" name="name" /> */}
                 <textarea
                   placeholder="Additional Notes"
                   className="textarea"
                   name={"message"}
                   id={"message"}
                 />
-                {/* <input type="text" required="" name="name" /> */}
                 <button
                   className="cart-btn-2"
                   type="submit"
                   onClick={onLoginForm}
                 >
-                  {/* {!isLoggedIn ? "Login" : "Send books request"} */}
                   Send books request
                 </button>
               </form>
