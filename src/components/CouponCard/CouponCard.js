@@ -2,6 +2,25 @@ import React, { useEffect, useState } from "react";
 import netlifyIdentity from "netlify-identity-widget";
 import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
+import { navigate } from "gatsby";
+
+const EmptyCard = () => {
+  const onClick = () => {
+    navigate("/");
+  };
+  return (
+    <div className="billing-info-wrap">
+      <p>
+        Your cart is empty please pick your books and check this page again.
+      </p>
+      <div className="checkout-account-toggle open-toggle2 mb-30">
+        <button className={`checkout-btn`} type="submit" onClick={onClick}>
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const CouponCard = () => {
   const { items } = useBasket(constants.BASKET_KEY, {});
@@ -31,21 +50,25 @@ const CouponCard = () => {
             </h4>
           </div>
           <div className="discount-code">
-            <p>You need to login/signup before submiting your book list.</p>
+            {hasItems && (
+              <>
+                <p>You need to login/signup before submiting your book list.</p>
 
-            <div className="billing-info-wrap">
-              <div className="checkout-account-toggle open-toggle2 mb-30">
-                <button
-                  className={`checkout-btn ${isLoggedIn && "loggedIn"}`}
-                  type="submit"
-                  onClick={onLoginForm}
-                >
-                  Login / Signup
-                </button>
-              </div>
-            </div>
+                <div className="billing-info-wrap">
+                  <div className="checkout-account-toggle open-toggle2 mb-30">
+                    <button
+                      className={`checkout-btn ${isLoggedIn && "loggedIn"}`}
+                      type="submit"
+                      onClick={onLoginForm}
+                    >
+                      Login / Signup
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
 
-            {hasItems && }
+            {!hasItems && <EmptyCard />}
 
             {hasItems && isLoggedIn && (
               <form>

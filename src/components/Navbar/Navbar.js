@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import CardWrap from "./CardWrap";
 import "../../assets/scss/_header.scss";
 import "../../assets/scss/_breadcrumb.scss";
+import TopLoginSignup from "./TopLoginSignup";
 
 const Navbar = ({ isHome = false }) => {
   return (
@@ -75,7 +76,7 @@ const Navbar = ({ isHome = false }) => {
                   </form>
                 </div>
               </div>
-              <div className="same-style account-satting">
+              {/* <div className="same-style account-satting">
                 <a className="account-satting-active" href="/">
                   <i className="pe-7s-user-female"></i>
                 </a>
@@ -95,11 +96,12 @@ const Navbar = ({ isHome = false }) => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
+              <TopLoginSignup />
               <div className="same-style header-wishlist">
-                <a href="wishlist.html">
+                <Link to="/">
                   <i className="pe-7s-like"></i>
-                </a>
+                </Link>
               </div>
               <CardWrap />
             </div>

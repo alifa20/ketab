@@ -5,7 +5,6 @@ export const REMOVE = "REMOVE";
 export const SET_STATE = "SET_STATE";
 
 export const basketReducer = (state, action) => {
-  console.log("in reducer", action, state);
   switch (action.type) {
     case ADD: {
       const current = { ...state.basket };
@@ -25,7 +24,6 @@ export const basketReducer = (state, action) => {
     }
 
     case SET_STATE: {
-      console.log("action.items", action.items);
       return { ...state, ...action.items };
     }
     // return { ...state, basket: action.items };

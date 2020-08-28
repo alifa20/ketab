@@ -1,5 +1,6 @@
 import React from "react";
 import { useBasket, constants } from "../../shared";
+import { Link } from "gatsby";
 
 const ItemList = ({ item }) => {
   const { remove } = useBasket(constants.BASKET_KEY, {});
@@ -50,6 +51,9 @@ const ItemList = ({ item }) => {
 const MiniBookCardList = () => {
   const { items } = useBasket(constants.BASKET_KEY, {});
   const userAddedItems = Object.values(items).filter(Boolean);
+  // const onConsinueShopping = () => {
+  //   navigate("/");
+  // };
 
   return (
     <div className="row">
@@ -59,7 +63,7 @@ const MiniBookCardList = () => {
             <div className="col-lg-12">
               <div className="cart-shiping-update-wrapper">
                 <div className="cart-shiping-update">
-                  <a href="#">Continue Shopping</a>
+                  <Link to="/">Continue Shopping</Link>
                 </div>
                 <div className="cart-clear">
                   {/* <button>Update Shopping Cart</button> */}
