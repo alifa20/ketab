@@ -31,7 +31,7 @@ const ItemList = ({ item }) => {
             className="cart-plus-minus-box"
             type="text"
             name="qtybutton"
-            value="2"
+            defaultValue="2"
           />
           <div className="inc qtybutton">+</div>
         </div>

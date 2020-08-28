@@ -37,6 +37,7 @@ const CouponCard = () => {
     netlifyIdentity.open();
   };
 
+  console.log("message", message);
   const sendBookList = async (e) => {
     e.preventDefault();
 
@@ -119,6 +120,7 @@ const CouponCard = () => {
                   className="textarea"
                   name={"message"}
                   id={"message"}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
                 <p>
                   {submitResult.length > 0 &&

@@ -41,7 +41,7 @@ const CardList = () => {
   return (
     <ul>
       {userAddedItems.map(({ item }) => (
-        <LineItem item={item} />
+        <LineItem key={item.id} item={item} />
       ))}
     </ul>
   );

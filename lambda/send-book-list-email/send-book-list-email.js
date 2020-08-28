@@ -39,9 +39,11 @@ exports.handler = async (event) => {
       to: CONTACT_TO_EMAIL_ADDRESS,
       "h:Reply-To": data.email,
       subject: `New Book order from ${data.name}`,
-      text: `Name: ${data.name}\nEmail: ${data.email}\nBooks: ${bookNames.join(
-        "\r\n"
-      )}Message: ${data.message}`,
+      text: `Name: ${data.name}\nEmail: ${
+        data.email
+      }\nBooks: \n--------\n${bookNames.join("\r\n")} \n--------\n Message: ${
+        data.message
+      }`,
     };
 
     await mailgun.messages().send(mailgunData);
