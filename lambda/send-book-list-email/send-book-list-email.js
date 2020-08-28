@@ -32,8 +32,9 @@ exports.handler = async (event) => {
     }
 
     const bookNames = (data.books || []).map(
-      (book) => `${book.item.frontmatter.title} price: `
+      (book) => `${book.item.frontmatter.title}  ---- price: N/A`
     );
+
     const mailgunData = {
       from: FROM_EMAIL_ADDRESS,
       to: CONTACT_TO_EMAIL_ADDRESS,

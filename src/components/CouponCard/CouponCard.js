@@ -22,6 +22,25 @@ const EmptyCard = () => {
   );
 };
 
+const JustSubmittedMessage = () => {
+  const onClick = () => {
+    navigate("/");
+  };
+  return (
+    <div className="billing-info-wrap">
+      <p>
+        Your book list successfully emailed to us. We will get back to you
+        shortly
+      </p>
+      <div className="checkout-account-toggle open-toggle2 mb-30">
+        <button className={`checkout-btn`} type="submit" onClick={onClick}>
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const CouponCard = () => {
   const { items } = useBasket(constants.BASKET_KEY, {});
   const userAddedItems = Object.values(items).filter(Boolean);
@@ -37,6 +56,7 @@ const CouponCard = () => {
     netlifyIdentity.open();
   };
 
+  const justSubmitted = submitResult && submitResult.length > 0;
   console.log("message", message);
   const sendBookList = async (e) => {
     e.preventDefault();
@@ -59,6 +79,7 @@ const CouponCard = () => {
       console.log(text);
       if (text.status === 200) {
         setSubmitResult("Your list successfully sent.");
+        alert("Your list successfully sent. We will get back to you on email.");
       } else {
         setSubmitResult("Error happened please try later");
       }
@@ -100,7 +121,8 @@ const CouponCard = () => {
               </>
             )}
 
-            {!hasItems && <EmptyCard />}
+            {!hasItems && !justSubmitted && <EmptyCard />}
+            {justSubmitted && <JustSubmittedMessage />}
 
             {hasItems && isLoggedIn && (
               <form>
@@ -123,7 +145,7 @@ const CouponCard = () => {
                   onChange={(e) => setMessage(e.target.value)}
                 />
                 <p>
-                  {submitResult.length > 0 &&
+                  {justSubmitted &&
                     `Your books will be emailed to us and we will be in contact
                   about shipping your books.`}
                 </p>

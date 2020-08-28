@@ -49,12 +49,17 @@ const ItemList = ({ item }) => {
   );
 };
 const MiniBookCardList = () => {
-  const { items } = useBasket(constants.BASKET_KEY, {});
+  const { items, clear } = useBasket(constants.BASKET_KEY, {});
   const userAddedItems = Object.values(items).filter(Boolean);
   const hasItems = userAddedItems.length > 0;
   // const onConsinueShopping = () => {
   //   navigate("/");
   // };
+
+  const onClear = (e) => {
+    e.preventDefault();
+    clear();
+  };
 
   return (
     <div className="row">
@@ -69,7 +74,11 @@ const MiniBookCardList = () => {
                 </div>
                 <div className="cart-clear">
                   {/* <button>Update Shopping Cart</button> */}
-                  {hasItems && <a href="#">Clear Shopping Cart</a>}
+                  {hasItems && (
+                    <a href="#" onClick={onClear}>
+                      Clear Shopping Cart
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

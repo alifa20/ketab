@@ -2,6 +2,7 @@ import { BASKET_KEY } from "./constants";
 
 export const ADD = "ADD";
 export const REMOVE = "REMOVE";
+export const CLEAR = "CLEAR";
 export const SET_STATE = "SET_STATE";
 
 export const basketReducer = (state, action) => {
@@ -20,6 +21,12 @@ export const basketReducer = (state, action) => {
       const basket = { ...current };
       const newState = { ...state, basket };
       window.localStorage.setItem(BASKET_KEY, JSON.stringify(newState));
+      return newState;
+    }
+
+    case CLEAR: {
+      const newState = { ...state, basket: {} };
+      window.localStorage.setItem(BASKET_KEY, JSON.stringify([]));
       return newState;
     }
 

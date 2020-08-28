@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { ADD, REMOVE, SET_STATE } from "./basketReducer";
+import { ADD, REMOVE, CLEAR, SET_STATE } from "./basketReducer";
 import { RootContext } from "./RootContext";
 
 export function useBasket(key, initialValue = {}) {
@@ -11,6 +11,8 @@ export function useBasket(key, initialValue = {}) {
   };
   const remove = (item) => dispatch({ type: REMOVE, item });
   //   const set = (items) => dispatch({ type: SET_STATE, items });
+
+  const clear = () => dispatch({ type: CLEAR });
 
   useEffect(() => {
     const items = window.localStorage.getItem(key);
@@ -25,6 +27,7 @@ export function useBasket(key, initialValue = {}) {
     add,
     items,
     remove,
+    clear,
     // set
   };
 }
