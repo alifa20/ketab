@@ -32,6 +32,8 @@ const CouponCard = () => {
     netlifyIdentity.open();
   };
 
+  const sendBookList = () => {};
+
   const user = netlifyIdentity.currentUser();
   const [isLoggedIn, setisLoggedIn] = useState(user !== null);
 
@@ -72,6 +74,10 @@ const CouponCard = () => {
 
             {hasItems && isLoggedIn && (
               <form>
+                <p>
+                  Your books will be emailed to us and we will be in contact
+                  about shipping your books.
+                </p>
                 <textarea
                   placeholder="Additional Notes"
                   className="textarea"
@@ -81,9 +87,9 @@ const CouponCard = () => {
                 <button
                   className="cart-btn-2"
                   type="submit"
-                  onClick={onLoginForm}
+                  onClick={sendBookList}
                 >
-                  Send books request
+                  Send my books list
                 </button>
               </form>
             )}

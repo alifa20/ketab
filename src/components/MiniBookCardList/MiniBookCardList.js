@@ -51,30 +51,32 @@ const ItemList = ({ item }) => {
 const MiniBookCardList = () => {
   const { items } = useBasket(constants.BASKET_KEY, {});
   const userAddedItems = Object.values(items).filter(Boolean);
+  const hasItems = userAddedItems.length > 0;
   // const onConsinueShopping = () => {
   //   navigate("/");
   // };
 
   return (
     <div className="row">
+      {hasItems && <h3 className="cart-page-title">Your cart items</h3>}
       <div className="col-lg-12 col-md-12 col-sm-12 col-12">
         <form action="#">
           <div className="row">
             <div className="col-lg-12">
               <div className="cart-shiping-update-wrapper">
                 <div className="cart-shiping-update">
-                  <Link to="/">Continue Shopping</Link>
+                  {hasItems && <Link to="/">Continue Shopping</Link>}
                 </div>
                 <div className="cart-clear">
                   {/* <button>Update Shopping Cart</button> */}
-                  <a href="#">Clear Shopping Cart</a>
+                  {hasItems && <a href="#">Clear Shopping Cart</a>}
                 </div>
               </div>
             </div>
           </div>
           <div className="table-content table-responsive cart-table-content">
             <table>
-              {userAddedItems.length > 0 && (
+              {hasItems > 0 && (
                 <thead>
                   <tr>
                     <th>Image</th>
