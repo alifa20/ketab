@@ -27,15 +27,44 @@ const CouponCard = () => {
   const userAddedItems = Object.values(items).filter(Boolean);
   const hasItems = userAddedItems.length > 0;
 
+  const user = netlifyIdentity.currentUser();
+  const [isLoggedIn, setisLoggedIn] = useState(user !== null);
+
+  const [message, setMessage] = useState("");
+  const [submitResult, setSubmitResult] = useState("");
   const onLoginForm = (e) => {
     e.preventDefault();
     netlifyIdentity.open();
   };
 
-  const sendBookList = () => {};
+  const sendBookList = async (e) => {
+    e.preventDefault();
 
-  const user = netlifyIdentity.currentUser();
-  const [isLoggedIn, setisLoggedIn] = useState(user !== null);
+    try {
+      const body = JSON.stringify({
+        email: user.email,
+        books: userAddedItems,
+        name: user.user_metadata.full_name,
+        message,
+      });
+      const text = await fetch("/.netlify/functions/send-book-list-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+      }).catch((error) => {
+        console.log("This is err", error);
+        throw error;
+      });
+      console.log(text);
+      if (text.status === 200) {
+        setSubmitResult("Your list successfully sent.");
+      } else {
+        setSubmitResult("Error happened please try later");
+      }
+    } catch (err) {
+      setSubmitResult("Error happened please try later");
+    }
+  };
 
   useEffect(() => {
     netlifyIdentity.on("login", () => setisLoggedIn(true));
@@ -78,12 +107,24 @@ const CouponCard = () => {
                   Your books will be emailed to us and we will be in contact
                   about shipping your books.
                 </p>
+                {/* <input placeholder="Email*" name="email" id="email" /> */}
+                {/* <input
+                  placeholder="Mobile"
+                  name="email"
+                  id="email"
+                  type="number"
+                /> */}
                 <textarea
                   placeholder="Additional Notes"
                   className="textarea"
                   name={"message"}
                   id={"message"}
                 />
+                <p>
+                  {submitResult.length > 0 &&
+                    `Your books will be emailed to us and we will be in contact
+                  about shipping your books.`}
+                </p>
                 <button
                   className="cart-btn-2"
                   type="submit"
