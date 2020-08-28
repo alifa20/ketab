@@ -42,7 +42,7 @@ const JustSubmittedMessage = () => {
 };
 
 const CouponCard = () => {
-  const { items } = useBasket(constants.BASKET_KEY, {});
+  const { items, clear } = useBasket(constants.BASKET_KEY, {});
   const userAddedItems = Object.values(items).filter(Boolean);
   const hasItems = userAddedItems.length > 0;
 
@@ -79,6 +79,7 @@ const CouponCard = () => {
       console.log(text);
       if (text.status === 200) {
         setSubmitResult("Your list successfully sent.");
+        clear();
         alert("Your list successfully sent. We will get back to you on email.");
       } else {
         setSubmitResult("Error happened please try later");
