@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
 import { navigate } from "gatsby";
+import { isAuthenticated } from "../../utils/auth";
 
 const EmptyCard = () => {
   const onClick = () => {
@@ -48,13 +49,17 @@ const CouponCard = () => {
 
   // const user = netlifyIdentity.currentUser();
   const user = null;
-  const [isLoggedIn, setisLoggedIn] = useState(user !== null);
+
+  // const [isLoggedIn, setisLoggedIn] = useState(user !== null);
+
+  const isLoggedIn = isAuthenticated();
 
   const [message, setMessage] = useState("");
   const [submitResult, setSubmitResult] = useState("");
   const onLoginForm = (e) => {
     e.preventDefault();
     // netlifyIdentity.open();
+    navigate("/account");
   };
 
   const justSubmitted = submitResult && submitResult.length > 0;
@@ -105,7 +110,7 @@ const CouponCard = () => {
             </h4>
           </div>
           <div className="discount-code">
-            {hasItems && (
+            {hasItems && !isLoggedIn && (
               <>
                 <p>You need to login/signup before submiting your book list.</p>
 

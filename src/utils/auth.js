@@ -52,18 +52,20 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt;
     user = authResult.idTokenPayload;
     localStorage.setItem("isLoggedIn", true);
-    debugger;
-    navigate("/account");
+    console.log("heeeeeee", localStorage.getItem("isLoggedIn"));
+    // localStorage.getItem("isLoggedIn") !== "true" && navigate("/"); // Page to redirect after logged in.
     cb();
   }
 };
 
 export const handleAuthentication = () => {
+  console.log("hee in handleAuthentication");
   if (!isBrowser) {
     return;
   }
 
-  auth.parseHash(setSession());
+  const callback = navigate("/");
+  auth.parseHash(setSession(callback));
 };
 
 export const getProfile = () => {
