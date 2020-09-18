@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import netlifyIdentity from "netlify-identity-widget";
+// import netlifyIdentity from "netlify-identity-widget";
 import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
 import { navigate } from "gatsby";
@@ -46,14 +46,15 @@ const CouponCard = () => {
   const userAddedItems = Object.values(items).filter(Boolean);
   const hasItems = userAddedItems.length > 0;
 
-  const user = netlifyIdentity.currentUser();
+  // const user = netlifyIdentity.currentUser();
+  const user = null;
   const [isLoggedIn, setisLoggedIn] = useState(user !== null);
 
   const [message, setMessage] = useState("");
   const [submitResult, setSubmitResult] = useState("");
   const onLoginForm = (e) => {
     e.preventDefault();
-    netlifyIdentity.open();
+    // netlifyIdentity.open();
   };
 
   const justSubmitted = submitResult && submitResult.length > 0;
@@ -89,10 +90,10 @@ const CouponCard = () => {
     }
   };
 
-  useEffect(() => {
-    netlifyIdentity.on("login", () => setisLoggedIn(true));
-    netlifyIdentity.on("logout", () => setisLoggedIn(false));
-  }, []);
+  // useEffect(() => {
+  //   netlifyIdentity.on("login", () => setisLoggedIn(true));
+  //   netlifyIdentity.on("logout", () => setisLoggedIn(false));
+  // }, []);
 
   return (
     <div className="row">

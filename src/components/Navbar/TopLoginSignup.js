@@ -1,10 +1,12 @@
 import React from "react";
-import netlifyIdentity from "netlify-identity-widget";
+// import netlifyIdentity from "netlify-identity-widget";
+import { navigate } from "gatsby";
 
 const TopLoginSignup = () => {
   const onIconClick = (e) => {
     e.preventDefault();
-    netlifyIdentity.open();
+    // netlifyIdentity.open();
+    navigate("/account");
   };
 
   return (

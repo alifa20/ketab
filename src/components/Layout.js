@@ -14,15 +14,15 @@ import Navbar from "../components/Navbar";
 import { basketReducer, RootContext, initialState } from "../shared";
 // import "./all.sass";
 import useSiteMetadata from "./SiteMetadata";
-import netlifyIdentity from "netlify-identity-widget";
+// import netlifyIdentity from "netlify-identity-widget";
 
 // export const RootContext = React.createContext({ basket: [], wishList: [] });
 
 const TemplateWrapper = ({ children, isHome }) => {
-  useEffect(() => {
-    window.netlifyIdentity = netlifyIdentity;
-    netlifyIdentity.init({});
-  }, []);
+  // useEffect(() => {
+  //   window.netlifyIdentity = netlifyIdentity;
+  //   netlifyIdentity.init({});
+  // }, []);
 
   const { title, description } = useSiteMetadata();
 
