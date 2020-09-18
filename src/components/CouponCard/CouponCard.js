@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
 import { navigate, Link } from "gatsby";
-import { isAuthenticated } from "../../utils/auth";
+import { isAuthenticated, getProfile } from "../../utils/auth";
 
 const EmptyCard = () => {
   const onClick = () => {
@@ -52,7 +52,7 @@ const CouponCard = () => {
   const hasItems = userAddedItems.length > 0;
 
   // const user = netlifyIdentity.currentUser();
-  const user = null;
+  const user = getProfile();
 
   // const [isLoggedIn, setisLoggedIn] = useState(user !== null);
 
@@ -67,15 +67,16 @@ const CouponCard = () => {
   };
 
   const justSubmitted = submitResult && submitResult.length > 0;
-  console.log("message", message);
   const sendBookList = async (e) => {
     e.preventDefault();
 
+    console.log("user", user);
     try {
       const body = JSON.stringify({
         email: user.email,
         books: userAddedItems,
-        name: user.user_metadata.full_name,
+        // name: user.user_metadata.full_name,
+        name: user.name,
         message,
       });
       const text = await fetch("/.netlify/functions/send-book-list-email", {
@@ -96,6 +97,7 @@ const CouponCard = () => {
       }
     } catch (err) {
       setSubmitResult("Error happened please try later");
+      console.error(err);
     }
   };
 
