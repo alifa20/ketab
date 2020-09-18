@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import netlifyIdentity from "netlify-identity-widget";
 import { useBasket, constants } from "../../shared";
 // import { netlifyAuth } from "../../shared/netlifyAuth";
-import { navigate } from "gatsby";
+import { navigate, Link } from "gatsby";
 import { isAuthenticated } from "../../utils/auth";
 
 const EmptyCard = () => {
@@ -28,16 +28,20 @@ const JustSubmittedMessage = () => {
     navigate("/");
   };
   return (
-    <div className="billing-info-wrap">
-      <p>
-        Your book list successfully emailed to us. We will get back to you
-        shortly
-      </p>
-      <div className="checkout-account-toggle open-toggle2 mb-30">
+    <div className="cart-shiping-update-wrapper">
+      <div className="cart-shiping-update">
+        <p>
+          Your book list successfully emailed to us. We will get back to you
+          shortly
+        </p>
+        <Link to="/">Continue Shopping</Link>
+      </div>
+      {/* <div className="checkout-account-toggle open-toggle2 mb-30">
+        <Link to="/">Continue Shopping</Link>
         <button className={`checkout-btn`} type="submit" onClick={onClick}>
           Continue Shopping
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -133,10 +137,10 @@ const CouponCard = () => {
 
             {hasItems && isLoggedIn && (
               <form>
-                <p>
+                {/* <p>
                   Your books will be emailed to us and we will be in contact
                   about shipping your books.
-                </p>
+                </p> */}
                 {/* <input placeholder="Email*" name="email" id="email" /> */}
                 {/* <input
                   placeholder="Mobile"
@@ -144,25 +148,29 @@ const CouponCard = () => {
                   id="email"
                   type="number"
                 /> */}
-                <textarea
-                  placeholder="Additional Notes"
-                  className="textarea"
-                  name={"message"}
-                  id={"message"}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
+                {!justSubmitted && (
+                  <textarea
+                    placeholder="Additional Notes"
+                    className="textarea"
+                    name={"message"}
+                    id={"message"}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                )}
                 <p>
-                  {justSubmitted &&
+                  {!justSubmitted &&
                     `Your books will be emailed to us and we will be in contact
                   about shipping your books.`}
                 </p>
-                <button
-                  className="cart-btn-2"
-                  type="submit"
-                  onClick={sendBookList}
-                >
-                  Send my books list
-                </button>
+                {!justSubmitted && (
+                  <button
+                    className="cart-btn-2"
+                    type="submit"
+                    onClick={sendBookList}
+                  >
+                    Send my books list
+                  </button>
+                )}
               </form>
             )}
           </div>
