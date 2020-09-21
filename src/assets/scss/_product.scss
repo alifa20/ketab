@@ -253,6 +253,10 @@
         text-decoration: line-through;
         margin-left: 20px;
       }
+      &.unchanged {
+        color: #333;
+        font-size: 20px;
+      }
     }
   }
   .pro-details-rating-wrap {

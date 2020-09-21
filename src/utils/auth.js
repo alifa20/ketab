@@ -40,7 +40,7 @@ export const login = () => {
 
 const setSession = (cb = () => {}) => (err, authResult) => {
   if (err) {
-    navigate("/");
+    // navigate("/");
     cb();
     return;
   }
@@ -53,13 +53,12 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     user = authResult.idTokenPayload;
     localStorage.setItem("isLoggedIn", true);
     console.log("heeeeeee", localStorage.getItem("isLoggedIn"));
-    // localStorage.getItem("isLoggedIn") !== "true" && navigate("/"); // Page to redirect after logged in.
+    localStorage.getItem("isLoggedIn") !== "true" && navigate("/"); // Page to redirect after logged in.
     cb();
   }
 };
 
 export const handleAuthentication = () => {
-  console.log("hee in handleAuthentication");
   if (!isBrowser) {
     return;
   }
