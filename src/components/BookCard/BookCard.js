@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React, { useContext } from "react";
 import { constants, RootContext, useBasket } from "../../shared";
 import Rating from "./Rating";
@@ -40,6 +41,7 @@ const BookCard = ({ book }) => {
   // const canRemove = book.id in state.basket ;
   const canRemove = state.basket[book.id];
   const { frontmatter: data } = book;
+
   const image = data.featuredimage?.childImageSharp
     ? data.featuredimage?.childImageSharp.fluid.src
     : "https://picsum.photos/id/365/270/345";
@@ -50,10 +52,13 @@ const BookCard = ({ book }) => {
     <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6">
       <div className="product-wrap mb-25 scroll-zoom">
         <div className="product-img">
-          <a href="product-details.html">
+          <Link className="button" to={book.fields.slug}>
+            {/* <Link className="button" to={`/book/${book.id}`}> */}
             <img className="default-img" src={image} alt="" />
             <img className="hover-img" src={image} alt="" />
-          </a>
+          </Link>
+          {/* <a href="product-details.html"> */}
+          {/* </a> */}
           <span className="pink">-10%</span>
           <div className="product-action">
             <div className="pro-same-action pro-wishlist">

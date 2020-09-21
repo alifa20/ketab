@@ -94,6 +94,10 @@ exports.createPages = ({ actions, graphql }) => {
       context: {},
     });
     // Create cart page
+
+    // Create book page
+
+    // End of Create book page
   });
 };
 

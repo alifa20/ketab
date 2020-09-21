@@ -253,6 +253,9 @@ export const pageQuery = graphql`
             slug
             book {
               id
+              fields {
+                slug
+              }
               frontmatter {
                 title
                 templateKey
