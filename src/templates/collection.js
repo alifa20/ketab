@@ -166,6 +166,9 @@ export const pageQuery = graphql`
         node {
           id
           html
+          fields {
+            slug
+          }
           frontmatter {
             title
             templateKey
