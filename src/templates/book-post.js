@@ -22,6 +22,13 @@ export const BookPageQuery = graphql`
         slug
       }
       frontmatter {
+        featuredimage {
+          childImageSharp {
+            fluid(maxWidth: 270, quality: 100) {
+              src
+            }
+          }
+        }
         templateKey
         date(formatString: "MMMM DD, YYYY")
         title

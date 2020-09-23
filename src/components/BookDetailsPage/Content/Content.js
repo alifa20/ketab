@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { constants, RootContext, useBasket } from "../../../shared";
 import Categories from "./Categories";
-import Social from "./Social";
 import DetailsImage from "./DetailsImage";
-// import SizeColor from "./SizeColor";
-import Tag from "./Tag";
 import Price from "./Price";
+
 const Content = ({ data }) => {
+  const { add, remove } = useBasket(constants.BASKET_KEY, {});
+  const { state } = useContext(RootContext);
+  const canRemove = state.basket[data.id];
+
+  const onAddClick = (e) => {
+    e.preventDefault();
+    add(data);
+  };
+
+  const onRemoveClick = (e) => {
+    e.preventDefault();
+    remove(data);
+  };
+
   return (
     <div className="shop-area pt-100 pb-100">
       <div className="container">
@@ -52,8 +65,18 @@ const Content = ({ data }) => {
                   />
                   <div className="inc qtybutton">+</div>
                 </div>
+
                 <div className="pro-details-cart btn-hover">
-                  <a href="#">Add To Cart</a>
+                  {!canRemove && (
+                    <a href="#" onClick={onAddClick}>
+                      Add To Cart
+                    </a>
+                  )}
+                  {canRemove && (
+                    <a href="#" onClick={onRemoveClick}>
+                      Remove
+                    </a>
+                  )}
                 </div>
                 <div className="pro-details-wishlist">
                   <a href="#">
