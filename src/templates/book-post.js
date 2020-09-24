@@ -29,6 +29,10 @@ export const BookPageQuery = graphql`
             }
           }
         }
+        oldPrice
+        newPrice
+        salePercentage
+        rating
         templateKey
         date(formatString: "MMMM DD, YYYY")
         title

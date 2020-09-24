@@ -4,41 +4,20 @@ import { constants, RootContext, useBasket } from "../../shared";
 import Rating from "./Rating";
 
 const BookCard = ({ book }) => {
-  // const [items, setItems] = useBasket([], constants.BASKET_KEY);
-  // console.log("itemssss", items);
   const { state } = useContext(RootContext);
   const { add, remove } = useBasket(constants.BASKET_KEY, {});
 
   const onAddClick = (e) => {
     e.preventDefault();
     add(book);
-    // setItems([...items, { id: book.id, title: book.title }]);
-    // const currentItemsRaw = window.localStorage.getItem(constants.BASKET_KEY);
-    // const currentItems = currentItemsRaw ? JSON.parse(currentItemsRaw) : [];
-
-    // console.log("book.id", book.id);
-    // window.localStorage.setItem(
-    //   constants.BASKET_KEY,
-    //   JSON.stringify([...currentItems, { id: book.id, title: book.title }])
-    // );
   };
 
   const onRemoveClick = (e) => {
     e.preventDefault();
     remove(book);
-    // setItems([...items, { id: book.id, title: book.title }]);
-    // const currentItemsRaw = window.localStorage.getItem(constants.BASKET_KEY);
-    // const currentItems = currentItemsRaw ? JSON.parse(currentItemsRaw) : [];
-
-    // console.log("book.id", book.id);
-    // window.localStorage.setItem(
-    //   constants.BASKET_KEY,
-    //   JSON.stringify([...currentItems, { id: book.id, title: book.title }])
-    // );
   };
 
   if (!book) return null;
-  // const canRemove = book.id in state.basket ;
   const canRemove = state.basket[book.id];
   const { frontmatter: data } = book;
 
@@ -46,20 +25,20 @@ const BookCard = ({ book }) => {
     ? data.featuredimage?.childImageSharp.fluid.src
     : "https://picsum.photos/id/365/270/345";
 
-  const rating = 0;
+  const rating = data.rating;
 
   return (
     <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6">
       <div className="product-wrap mb-25 scroll-zoom">
         <div className="product-img">
           <Link className="button" to={book.fields.slug}>
-            {/* <Link className="button" to={`/book/${book.id}`}> */}
             <img className="default-img" src={image} alt="" />
             <img className="hover-img" src={image} alt="" />
           </Link>
-          {/* <a href="product-details.html"> */}
-          {/* </a> */}
-          <span className="pink">-10%</span>
+
+          {+data.salePercentage > 0 && (
+            <span className="pink">{`-${data.salePercentage}%`}</span>
+          )}
           <div className="product-action">
             <div className="pro-same-action pro-wishlist">
               <a title="Wishlist" href="/book">
@@ -97,7 +76,9 @@ const BookCard = ({ book }) => {
           <Rating rating={rating} />
           <div className="product-price">
             <span>$ 60.00</span>
-            <span className="old">$ 60.00</span>
+            {+data.oldPrice > 0 && (
+              <span className="old">{`$ ${data.salePercentage}`}</span>
+            )}
           </div>
         </div>
       </div>

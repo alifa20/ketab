@@ -3,6 +3,7 @@ import { constants, RootContext, useBasket } from "../../../shared";
 import Categories from "./Categories";
 import DetailsImage from "./DetailsImage";
 import Price from "./Price";
+import Rating from "./Rating";
 
 const Content = ({ data }) => {
   const { add, remove } = useBasket(constants.BASKET_KEY, {});
@@ -31,15 +32,9 @@ const Content = ({ data }) => {
           <div className="col-lg-6 col-md-6">
             <div className="product-details-content ml-70">
               <h2>{data.frontmatter.title}</h2>
-              <Price />
+              <Price data={data} />
               <div className="pro-details-rating-wrap">
-                <div className="pro-details-rating">
-                  <i className="fa fa-star-o yellow"></i>
-                  <i className="fa fa-star-o yellow"></i>
-                  <i className="fa fa-star-o yellow"></i>
-                  <i className="fa fa-star-o"></i>
-                  <i className="fa fa-star-o"></i>
-                </div>
+                <Rating data={data} />
                 {/* <span>
                   <a href="#">3 Reviews</a>
                 </span> */}
@@ -83,11 +78,11 @@ const Content = ({ data }) => {
                     <i className="fa fa-heart-o"></i>
                   </a>
                 </div>
-                <div className="pro-details-compare">
+                {/* <div className="pro-details-compare">
                   <a href="#">
                     <i className="pe-7s-shuffle"></i>
                   </a>
-                </div>
+                </div> */}
               </div>
               <Categories />
               {/* <Tag /> */}
