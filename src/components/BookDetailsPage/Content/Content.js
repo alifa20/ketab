@@ -26,7 +26,7 @@ const Content = ({ data }) => {
         <div className="row">
           <div className="col-lg-6 col-md-6">
             <div className="product-details">
-              <DetailsImage />
+              <DetailsImage data={data} />
             </div>
           </div>
           <div className="col-lg-6 col-md-6">

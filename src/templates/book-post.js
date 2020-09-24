@@ -24,7 +24,7 @@ export const BookPageQuery = graphql`
       frontmatter {
         featuredimage {
           childImageSharp {
-            fluid(maxWidth: 270, quality: 100) {
+            fluid(maxWidth: 570, maxHeight: 680, quality: 100) {
               src
             }
           }

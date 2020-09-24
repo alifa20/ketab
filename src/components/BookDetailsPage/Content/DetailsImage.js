@@ -1,11 +1,17 @@
 import React from "react";
 
-const DetailsImage = () => {
+const DetailsImage = ({ data }) => {
+  const { frontmatter: book } = data;
+
+  const image = book.featuredimage?.childImageSharp
+    ? book.featuredimage?.childImageSharp.fluid.src
+    : "https://picsum.photos/id/365/270/345";
+
   return (
     <div className="product-details-img">
       <div className="tab-content jump">
         <div id="shop-details-1" className="tab-pane large-img-style active">
-          <img src="assets/img/product-details/large-1.jpg" alt="" />
+          <img src={image} alt="" />
           <span className="dec-price">-10%</span>
           <div className="img-popup-wrap">
             <a
@@ -47,7 +53,7 @@ const DetailsImage = () => {
           href="#shop-details-1"
           data-toggle="tab"
         >
-          <img src="assets/img/product-details/small-1.jpg" alt="" />
+          <img src="assets/img/product-details/small-2.jpg" alt="" />
         </a>
         <a
           className="shop-details-overly"

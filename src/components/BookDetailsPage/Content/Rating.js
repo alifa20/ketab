@@ -6,9 +6,9 @@ const Rating = ({ data }) => {
     <div className="pro-details-rating">
       {[...Array(5).keys()].map((item) =>
         +book.rating > item ? (
-          <i className="fa fa-star-o yellow"></i>
+          <i key={item} className="fa fa-star-o yellow"></i>
         ) : (
-          <i className="fa fa-star-o"></i>
+          <i key={item} className="fa fa-star-o"></i>
         )
       )}
     </div>
