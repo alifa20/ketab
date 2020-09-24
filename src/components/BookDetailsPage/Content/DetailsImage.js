@@ -12,7 +12,7 @@ const DetailsImage = ({ data }) => {
       <div className="tab-content jump">
         <div id="shop-details-1" className="tab-pane large-img-style active">
           <img src={image} alt="" />
-          <span className="dec-price">-10%</span>
+          {/* <span className="dec-price">-10%</span>
           <div className="img-popup-wrap">
             <a
               className="img-popup"
@@ -20,9 +20,9 @@ const DetailsImage = ({ data }) => {
             >
               <i className="pe-7s-expand1"></i>
             </a>
-          </div>
+          </div> */}
         </div>
-        <div id="shop-details-2" className="tab-pane large-img-style">
+        {/* <div id="shop-details-2" className="tab-pane large-img-style">
           <img src="assets/img/product-details/large-2.jpg" alt="" />
           <span className="dec-price">-10%</span>
           <div className="img-popup-wrap">
@@ -45,9 +45,9 @@ const DetailsImage = ({ data }) => {
               <i className="pe-7s-expand1"></i>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
-      <div className="shop-details-tab nav">
+      {/* <div className="shop-details-tab nav">
         <a
           className="shop-details-overly active"
           href="#shop-details-1"
@@ -70,6 +70,7 @@ const DetailsImage = ({ data }) => {
           <img src="assets/img/product-details/small-3.jpg" alt="" />
         </a>
       </div>
+    */}
     </div>
   );
 };

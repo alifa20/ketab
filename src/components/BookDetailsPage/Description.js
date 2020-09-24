@@ -20,7 +20,9 @@ const Description = ({ data }) => {
           </div>
           <div className="tab-content description-review-bottom">
             <div id="des-details2" className="tab-pane active">
-              <div className="product-description-wrapper">{book.body}</div>
+              <div className="product-description-wrapper">
+                {data.rawMarkdownBody}
+              </div>
             </div>
             <div id="des-details1" className="tab-pane">
               <div className="product-anotherinfo-wrapper">

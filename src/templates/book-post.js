@@ -39,6 +39,7 @@ export const BookPageQuery = graphql`
         description
         tags
       }
+      rawMarkdownBody
     }
   }
 `;
