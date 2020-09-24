@@ -87,6 +87,12 @@ collections:
       - { label: "Image 2", name: "image2", widget: image, required: false }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
+      - {
+          label: "Sale %",
+          name: "salePercentage",
+          widget: number,
+          valueType: "float",
+        }
 
   - name: "bestSeller"
     label: "BestSeller"
