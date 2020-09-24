@@ -1,6 +1,8 @@
 import React from "react";
 
-const Description = () => {
+const Description = ({ data }) => {
+  const { frontmatter: book } = data;
+
   return (
     <div className="description-review-area pb-90">
       <div className="container">
@@ -18,20 +20,7 @@ const Description = () => {
           </div>
           <div className="tab-content description-review-bottom">
             <div id="des-details2" className="tab-pane active">
-              <div className="product-description-wrapper">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt
-                </p>
-                <p>
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commo consequat. Duis aute irure dolor in reprehend in
-                  voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt{" "}
-                </p>
-              </div>
+              <div className="product-description-wrapper">{book.body}</div>
             </div>
             <div id="des-details1" className="tab-pane">
               <div className="product-anotherinfo-wrapper">
