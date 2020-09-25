@@ -1,12 +1,13 @@
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { BookCardList } from "../components/BookCardList";
-import CategoriesFilterList from "../components/CategoriesFilterList";
-import Layout from "../components/Layout";
-import "../assets/scss/_sidebar.scss";
-// import "../assets/scss/_blog.scss";
-import "../assets/scss/_shop.scss";
+// import { BookCardList } from "../components/BookCardList";
+// import CategoriesFilterList from "../components/CategoriesFilterList";
+// import Layout from "../components/Layout";
+// import "../assets/scss/_sidebar.scss";
+// // import "../assets/scss/_blog.scss";
+// import "../assets/scss/_shop.scss";
+import CollectionPage from "../components/CollectionPage";
 
 // export const CollectionTemplate = ({
 //   content,
@@ -56,95 +57,9 @@ import "../assets/scss/_shop.scss";
 //   helmet: PropTypes.object,
 // };
 
-const Collection = ({ data }) => {
-  const { edges } = data.books;
-  const { edges: categories } = data.categories;
-  const books = edges
-    .filter((book) => book.node.frontmatter)
-    .map((book) => book.node);
-
-  return (
-    <Layout>
-      <div className="shop-area pt-95 pb-100 section-padding-1">
-        <div className="container-fluid">
-          <div className="row flex-row-reverse">
-            <div className="col-lg-9">
-              <div className="shop-bottom-area mt-35">
-                <BookCardList books={books} />
-                <div className="pro-pagination-style text-center mt-30">
-                  <ul>
-                    <li>
-                      <a className="prev" href="#">
-                        <i className="fa fa-angle-double-left"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="active" href="#">
-                        1
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">2</a>
-                    </li>
-                    <li>
-                      <a className="next" href="#">
-                        <i className="fa fa-angle-double-right"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="  sidebar-style mr-30">
-                <div className="sidebar-widget">
-                  <h4 className="pro-sidebar-title">Search </h4>
-                  <div className="pro-sidebar-search mb-50 mt-25">
-                    <form className="pro-sidebar-search-form" action="#">
-                      <input type="text" placeholder="Search here..." />
-                      <button>
-                        <i className="pe-7s-search"></i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div className="sidebar-widget mt-50">
-                <h4 className="pro-sidebar-title">Categories </h4>
-                <div className="sidebar-widget-list mt-20">
-                  <CategoriesFilterList categories={categories} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* <ul>
-        {categories.map(({ node: category }) => (
-          <li>{category.frontmatter.title}</li>
-        ))}
-      </ul>
-      {edges.map(({ node: post }) => (
-        <CollectionTemplate
-          content={post.html}
-          contentComponent={HTMLContent}
-          description={post.frontmatter.description}
-          helmet={
-            <Helmet titleTemplate="%s | Blog">
-              <title>{`${post.frontmatter.title}`}</title>
-              <meta
-                name="description"
-                content={`${post.frontmatter.description}`}
-              />
-            </Helmet>
-          }
-          tags={post.frontmatter.tags}
-          title={post.frontmatter.title}
-        />
-      ))} */}
-    </Layout>
-  );
-};
+const Collection = ({ data, pageContext }) => (
+  <CollectionPage {...{ data, pageContext }} />
+);
 
 Collection.propTypes = {
   data: PropTypes.shape({
